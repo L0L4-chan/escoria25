@@ -8,11 +8,6 @@
 
 **Escoria 25** is a plugin for [Godot Engine](https://godotengine.org/) that aims to **unify and simplify** the configuration of various existing Escoria plugins.
 
-It is available at:
-
-* **Official Escoria GitHub repository**
-* **Godot Asset Store** under the name **Escoria 25**
-
 Its purpose is to centralize project settings for games developed with Escoria.
 
 ---
@@ -104,10 +99,6 @@ Activating the plugin will create new categories in **Project Settings** to conf
 
 **Escoria 25** es un plugin para [Godot Engine](https://godotengine.org/) que tiene como objetivo **reunificar y simplificar** la configuración de los distintos plugins de Escoria existentes.
 
-Está disponible en:
-
-* **Repositorio oficial de Escoria en GitHub**
-* **Godot Asset Store** bajo el nombre **Escoria 25**
 
 Su propósito es centralizar la configuración de proyectos desarrollados con Escoria.
 
