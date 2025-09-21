@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgt40wyn3redd"]
+
+[ext_resource type="Script" path="res://addons/escoria/ui-library/dialog/mouse/tooltip_target.gd" id="2"]
+
+[node name="tooltip" type="RichTextLabel"]
+bbcode_enabled = true
+text = "[center][color=#ffffff][/color][/center]"
+scroll_active = false
+script = ExtResource("2")
+offset_from_cursor = Vector2(0, 0)

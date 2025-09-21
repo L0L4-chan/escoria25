@@ -1,0 +1,167 @@
+[gd_resource type="Resource" script_class="ESCSaveGame" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/esc/esc_savegame.gd" id="1_kqha7"]
+
+[resource]
+script = ExtResource("1_kqha7")
+escoria_version = "1.0.0"
+game_version = "1.0"
+name = "l"
+date = {
+"day": 7,
+"month": 9,
+"weekday": 0,
+"year": 2025
+}
+main = {
+"current_scene_filename": "res://game/rooms/room05/room05.tscn",
+"last_scene_global_id": "room5"
+}
+globals = {
+"ESC_CURRENT_SCENE": "room5",
+"ESC_LAST_SCENE": "room4",
+"FORCE_LAST_SCENE_NULL": false,
+"dialog_advance": 0,
+"dialog_popup_advance": 0,
+"hop": true,
+"r3_bridge_closed": true,
+"r3_button_broken": false,
+"r4_door_look_count": 0,
+"r5_dialog_advance": 2,
+"r5_pipe_broken": false,
+"room1_visited": true,
+"room3_visited": true,
+"room5_visited": true
+}
+inventory = ["r5_wrench", "r5_filled_sheet"]
+objects = {
+"_music": {
+"active": true,
+"interactive": true,
+"playback_position": 55.725,
+"state": "res://game/sfx/contemplation.ogg"
+},
+"_sound": {
+"active": true,
+"interactive": true,
+"playback_position": 0.0,
+"state": "default"
+},
+"_speech": {
+"active": true,
+"interactive": true,
+"state": "default"
+},
+"intro_cutscene": {
+"intro_animation_player": {
+"active": true,
+"interactive": true,
+"state": ""
+}
+},
+"player": {
+"active": true,
+"custom_data": {},
+"global_transform": Transform2D(1, 0, 0, 1, 1005.5, 405.375),
+"interactive": true,
+"last_deg": 341,
+"last_dir": 2,
+"state": "default"
+},
+"room2": {
+"r2_bridge": {
+"active": true,
+"interactive": true,
+"state": ""
+}
+},
+"room3": {
+"r3_bridge": {
+"active": true,
+"interactive": true,
+"state": "bridge_close"
+},
+"r3_button": {
+"active": true,
+"interactive": true,
+"state": "button_repaired"
+}
+},
+"room5": {
+"r5_empty_sheet": {
+"active": false,
+"custom_data": {},
+"interactive": true,
+"state": "off"
+},
+"r5_filled_sheet": {
+"active": true,
+"custom_data": {},
+"interactive": true,
+"state": "off"
+},
+"r5_l_exit": {
+"active": true,
+"custom_data": {},
+"interactive": true,
+"state": "default"
+},
+"r5_pen": {
+"active": false,
+"custom_data": {},
+"interactive": true,
+"state": "off"
+},
+"r5_pipe": {
+"active": true,
+"custom_data": {},
+"interactive": true,
+"state": "stop_water"
+},
+"r5_player_start": {
+"active": true,
+"interactive": true,
+"state": "default"
+},
+"r5_r_exit": {
+"active": true,
+"custom_data": {},
+"interactive": true,
+"state": "default"
+},
+"r5_wrench": {
+"active": false,
+"custom_data": {},
+"interactive": true,
+"state": "off"
+}
+}
+}
+events = {
+"events_queue": {
+"_front": []
+},
+"sched_events": []
+}
+terrain_navpolys = {
+"room5": {
+"platform": true
+}
+}
+settings = {
+"custom_settings": {
+"a_custom_setting": 100
+},
+"escoria_version": "1.0.0",
+"fullscreen": false,
+"master_volume": 0.0,
+"music_volume": 0.0,
+"sfx_volume": 0.0,
+"speech_enabled": true,
+"speech_volume": 0.0,
+"text_lang": "es",
+"voice_lang": "es"
+}
+custom_data = {
+"ui_type": "Keyboard"
+}

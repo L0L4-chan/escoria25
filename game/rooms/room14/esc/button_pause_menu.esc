@@ -1,0 +1,12 @@
+
+:use
+
+# Show pause menu
+show_menu pause
+
+# Wait 2 seconds (this will run AFTER the pause menu is closed since the pause
+# menu also pauses the game)
+wait 2
+
+:look
+say player "Button pause menu"

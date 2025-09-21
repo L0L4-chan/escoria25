@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3gycjewy7npp"]
+
+[ext_resource type="Script" path="res://addons/escoria/ui-library/menus/load_save/load_save_slot/load_save_slot.gd" id="2"]
+
+[node name="slot" type="Button"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = -1
+anchor_right = 0.212
+anchor_bottom = 0.204
+offset_right = -0.224014
+offset_bottom = -0.192001
+size_flags_horizontal = 3
+script = ExtResource("2")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.114
+anchor_bottom = 1.436
+offset_top = 1.0
+offset_right = 0.0599976
+offset_bottom = -0.00799561
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="slot_name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "slot_name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="date" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "date"
+horizontal_alignment = 1

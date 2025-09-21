@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://bo4rhd5eis84w"]
+
+[ext_resource type="PackedScene" uid="uid://d1ul5qh682qgu" path="res://addons/escoria/ui-library/dialog/9-verb/game.tscn" id="1"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/dialog/esc_dialog_player.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cbefcwe8wi6tp" path="res://addons/escoria/scenes/camera.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d0f4aorw7t75v" path="res://addons/escoria/ui-library/dialog/mouse/verbs_mouseicons.tscn" id="4"]
+[ext_resource type="Script" path="res://addons/escoria/ui-library/dialog/mouse/game.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://dgt40wyn3redd" path="res://addons/escoria/ui-library/dialog/mouse/target_tooltip.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://d1hptg1mm8h2o" path="res://addons/escoria/ui-library/menus/main_menu/main_menu.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://ct0qsrj2gvian" path="res://addons/escoria/ui-library/menus/pause_menu/pause_menu.tscn" id="8"]
+[ext_resource type="Theme" path="res://addons/escoria/assets/theme.tres" id="9"]
+
+[node name="game" type="Node2D"]
+visible = false
+script = ExtResource("5")
+main_menu = NodePath("CanvasLayer/main_menu")
+pause_menu = NodePath("CanvasLayer/pause_menu")
+editor_debug_mode = 1
+ui_parent_control_node = NodePath("CanvasLayer/ui")
+
+[node name="camera" parent="." instance=ExtResource("3")]
+visible = false
+
+[node name="dialog_layer" type="CanvasLayer" parent="."]
+layer = 3
+visible = false
+
+[node name="ESCDialogsPlayer" type="Control" parent="dialog_layer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("9")
+script = ExtResource("2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ui" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("9")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ui"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ui/HBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/ui/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Menu"
+
+[node name="Spacer" type="Control" parent="CanvasLayer/ui/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="inventory_ui" parent="CanvasLayer/ui/HBoxContainer" instance=ExtResource("1")]
+visible = false
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("8")]
+visible = false
+theme = ExtResource("9")
+
+[node name="main_menu" parent="CanvasLayer" instance=ExtResource("7")]
+
+[node name="tooltip_layer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="tooltip" parent="tooltip_layer" instance=ExtResource("6")]
+visible = false
+mouse_filter = 2
+theme = ExtResource("9")
+text = "[center][color=#000000][/color][/center]"
+offset_from_cursor = Vector2(25, 0)
+
+[node name="mouse_layer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="verbs_menu" parent="mouse_layer" instance=ExtResource("4")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+size_flags_horizontal = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]

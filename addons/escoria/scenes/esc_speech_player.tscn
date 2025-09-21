@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3384k3xf5xde"]
+
+[ext_resource type="Script" path="res://addons/escoria/scenes/esc_speech_player.gd" id="1"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

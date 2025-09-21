@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqd00xh7p83iy"]
+
+[ext_resource type="Texture2D" uid="uid://bjkaitraxnpg3" path="res://game/characters/mark/png/mark_thinking_question.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bn6xaombbdqnm" path="res://game/characters/mark/png/mark_thinking.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 27, 27)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(189, 0, 27, 27)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(162, 0, 27, 27)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(135, 0, 27, 27)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(108, 0, 27, 27)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("1")
+region = Rect2(81, 0, 27, 27)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("1")
+region = Rect2(54, 0, 27, 27)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("1")
+region = Rect2(27, 0, 27, 27)
+
+[sub_resource type="SpriteFrames" id="9"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MarkThinking" type="Sprite2D" parent="."]
+position = Vector2(-48, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("2")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(54, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("9")
+frame = 6

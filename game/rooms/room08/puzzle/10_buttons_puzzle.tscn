@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd6g6g7vwqfny"]
+
+[ext_resource type="Script" path="res://game/rooms/room08/puzzle/10_buttons_puzzle.gd" id="2"]
+
+[node name="10_buttons_puzzle" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 64.0
+offset_right = 730.0
+offset_bottom = 87.0
+text = "Click the buttons in the increasing order"
+
+[node name="win_label" type="Label" parent="."]
+layout_mode = 0
+text = "Well done!"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 162.0
+offset_right = 1187.0
+offset_bottom = 805.0
+columns = 5
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button4" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button5" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button6" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button7" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button8" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button9" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Button10" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.014
+offset_left = 1189.0
+offset_top = 15.0
+offset_right = 1234.08
+offset_bottom = 69.0
+text = "X"
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

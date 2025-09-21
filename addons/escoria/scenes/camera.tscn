@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbefcwe8wi6tp"]
+
+[ext_resource type="Script" path="res://addons/escoria/scenes/esc_camera.gd" id="1"]
+
+[node name="camera" type="Camera2D"]
+script = ExtResource("1")

@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2ohdultktkvi"]
+
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_terrain.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://r15u5b524up7" path="res://game/characters/mark/mark.tscn" id="4"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_item.gd" id="5"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_room.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://dpo5axskxru4m" path="res://game/rooms/room04/assets/forrest.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://d07i5mx4sf1yv" path="res://game/rooms/room04/assets/forrest_light_map.png" id="8"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_location.gd" id="9"]
+[ext_resource type="Texture2D" uid="uid://bth44pdoiugs5" path="res://game/rooms/room04/assets/walk_behind_tree.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://ctt621m6to3sr" path="res://game/rooms/room04/assets/forrest_height_texture.png" id="11"]
+
+[sub_resource type="NavigationPolygon" id="1"]
+vertices = PackedVector2Array(190.023, 908.328, 85.4375, 887.641, 161.281, 832.688, 246.367, 850.656, 2248.96, 770.719, 2321.86, 815.578, 2195.44, 904.969, 2169.06, 819.227, 486.344, 1054.4, 370.383, 1021.55, 511.18, 937.578, 645.648, 1011.4, 678.063, 876.43, 771.031, 947.25, 942.078, 643.906, 780.32, 748.844, 917.008, 621.992, 1065.27, 581.023, 1089.64, 588.828, 1266.55, 605.188, 1192.75, 582.977, 1269.94, 601.539, 1312.62, 625.547, 1316.27, 619.883, 1467.03, 771.891, 1375.36, 660.258, 1506.56, 752.992, 1649.13, 959.922, 1672.02, 866.398, 1756.04, 984.969, 1828.91, 898.18, 1972.25, 980.031, 2016.31, 863.742)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 0, 3, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15, 16), PackedInt32Array(14, 16, 17, 18), PackedInt32Array(19, 18, 17, 20, 21), PackedInt32Array(22, 19, 21, 23), PackedInt32Array(24, 22, 23, 25, 26), PackedInt32Array(27, 24, 26, 28, 29), PackedInt32Array(29, 28, 30, 31), PackedInt32Array(31, 30, 32, 6), PackedInt32Array(6, 32, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(159, 822, 249, 841, 511, 927, 672, 868, 773, 742, 912, 613, 1064, 571, 1194, 573, 1273, 592, 1321, 611, 1381, 652, 1512.27, 744.779, 1676, 857, 1829, 888, 2014, 854, 2165, 810, 2249, 759, 2340, 815, 2200, 914, 1974, 990, 1755, 995, 1644, 969, 1460, 779, 1307, 634, 1264, 615, 1091, 599, 949, 652, 778.268, 954.779, 649.268, 1020.78, 486.268, 1064.78, 366.268, 1030.78, 186.268, 917.779, 61, 893)])
+
+[node name="room4" type="Node2D"]
+script = ExtResource("6")
+global_id = "room4"
+esc_script = "res://game/rooms/room04/esc/room04.esc"
+player_scene = ExtResource("4")
+camera_limits = Array[Rect2]([Rect2(0, 0, 2390, 1200)])
+editor_debug_mode = 1
+
+[node name="Forrest" type="Sprite2D" parent="."]
+texture = ExtResource("7")
+centered = false
+
+[node name="room_label" type="Label" parent="Forrest"]
+text = "ROOM 4"
+
+[node name="Label" type="Label" parent="Forrest"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 770.0
+offset_top = 7.0
+offset_right = 972.0
+offset_bottom = 238.0
+text = "Change player height
+using a greyscale 
+depth map on 
+the ESCTerrain node. 
+Use black for the 
+smallest scale, white for 
+the largest.Image must be
+ the same size as the
+      background."
+
+[node name="Label2" type="Label" parent="Forrest"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1256.0
+offset_top = 519.0
+offset_right = 1555.0
+offset_bottom = 698.0
+text = "Colour the player with a
+lightmap on the ESCTerrain 
+node. Use any RGB colour you
+like. The image must be the same
+size as the background. Here a grey is 
+used to darken the player as they walk 
+through  shadows."
+
+[node name="Label3" type="Label" parent="Forrest"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1284.0
+offset_top = 206.0
+offset_right = 1428.0
+offset_bottom = 333.0
+text = "Use the \"z index\"
+on sprites to make
+the player walk
+behind them like 
+this tree trunk."
+
+[node name="walkable_area" type="Node2D" parent="."]
+script = ExtResource("1")
+scales = ExtResource("11")
+lightmap = ExtResource("8")
+player_speed_multiplier = 1.5
+player_doubleclick_speed_multiplier = 1.8
+
+[node name="platform" type="NavigationRegion2D" parent="walkable_area"]
+position = Vector2(11, -260)
+navigation_polygon = SubResource("1")
+
+[node name="player_start" type="Marker2D" parent="."]
+position = Vector2(193, 615)
+script = ExtResource("9")
+global_id = "r4_player_start"
+is_start_location = true
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="l_door" type="Area2D" parent="Hotspots"]
+process_mode = 1
+script = ExtResource("5")
+global_id = "l_exit"
+esc_script = "res://game/rooms/room04/esc/left_exit.esc"
+is_exit = true
+combine_when_selected_action_is_in = PackedStringArray()
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/l_door"]
+position = Vector2(-1, 6)
+polygon = PackedVector2Array(22, 633, 21, 328, 143, 276, 143, 565)
+
+[node name="Position2D" type="Marker2D" parent="Hotspots/l_door"]
+position = Vector2(138, 607)
+script = ExtResource("9")
+
+[node name="r_door" type="Area2D" parent="Hotspots"]
+process_mode = 1
+script = ExtResource("5")
+global_id = "r_exit"
+esc_script = "res://game/rooms/room04/esc/right_exit.esc"
+is_exit = true
+combine_when_selected_action_is_in = PackedStringArray()
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/r_door"]
+position = Vector2(-9, -5)
+polygon = PackedVector2Array(2266, 480, 2266, 189, 2385, 242, 2387, 544)
+
+[node name="Position2D" type="Marker2D" parent="Hotspots/r_door"]
+position = Vector2(2289, 540)
+script = ExtResource("9")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 366
+position = Vector2(1192, 292)
+scale = Vector2(1.1134, 1.33898)
+texture = ExtResource("10")

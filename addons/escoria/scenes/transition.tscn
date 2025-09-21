@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkn2pd61qm6cv"]
+
+[ext_resource type="Script" path="res://addons/escoria/scenes/esc_transition_player.gd" id="1"]
+[ext_resource type="Material" uid="uid://dfvbouxrq0onu" path="res://addons/escoria/scenes/transitions/from_center.material" id="1_jrcdn"]
+
+[node name="scene_transition" type="ColorRect"]
+material = ExtResource("1_jrcdn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1")

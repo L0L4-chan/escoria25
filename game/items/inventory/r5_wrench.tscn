@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmpvx3qae8h4d"]
+
+[ext_resource type="Texture2D" uid="uid://c8vhin5uxvrhh" path="res://game/items/inventory/wrench.png" id="1"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_location.gd" id="2"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_item.gd" id="3"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(74, 67)
+
+[node name="wrench" type="Area2D"]
+process_mode = 1
+script = ExtResource("3")
+global_id = "r5_wrench"
+esc_script = "res://game/items/inventory/wrench.esc"
+tooltip_name = "Wrench"
+default_action = "look"
+default_action_inventory = "look"
+combine_when_selected_action_is_in = PackedStringArray("use")
+use_from_inventory_only = true
+inventory_texture = ExtResource("1")
+animations = null
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(262, 436)
+texture = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(261, 435.5)
+shape = SubResource("2")
+
+[node name="ESCLocation" type="Marker2D" parent="."]
+position = Vector2(258, 486)
+script = ExtResource("2")

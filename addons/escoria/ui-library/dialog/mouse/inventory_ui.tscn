@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://dklu6xsml8xvt"]
+
+[ext_resource type="Script" path="res://addons/escoria/ui-library/dialog/mouse/inventory_ui.gd" id="1_tocmh"]
+[ext_resource type="Texture2D" uid="uid://c3i760oo1b1m3" path="res://addons/escoria/assets/image/inventory_bg.png" id="2"]
+[ext_resource type="Script" path="res://addons/escoria/ui-library/inventory/esc_inventory_container.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://d2vixsc7rnlqf" path="res://addons/escoria/assets/image/frame.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://csrsw16piebu2" path="res://addons/escoria/assets/image/inventory_icon.png" id="6"]
+
+[node name="inventory_ui" type="Control"]
+layout_mode = 3
+anchor_right = 0.4
+anchor_bottom = 0.4
+size_flags_horizontal = 0
+size_flags_vertical = 3
+script = ExtResource("1_tocmh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="inventory_button" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("6")
+
+[node name="frame" type="TextureRect" parent="HBoxContainer/inventory_button"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="FloatingInventory" type="CanvasLayer" parent="."]
+
+[node name="panel" type="TextureRect" parent="FloatingInventory"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="FloatingInventory/panel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FloatingInventory/panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_filter = 2
+
+[node name="container" type="HBoxContainer" parent="FloatingInventory/panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("3")
+
+[connection signal="pressed" from="HBoxContainer/inventory_button" to="." method="_on_inventory_button_pressed"]

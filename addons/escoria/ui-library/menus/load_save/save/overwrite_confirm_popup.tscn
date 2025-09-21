@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvned1l6hmaec"]
+
+[ext_resource type="Script" path="res://addons/escoria/ui-library/menus/load_save/save/overwrite_confirm_popup.gd" id="2"]
+
+[node name="overwrite_confirm_popup" type="Popup"]
+size = Vector2i(171, 100)
+visible = true
+script = ExtResource("2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONFIRM_OVERWRITE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="no" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "NO"
+
+[node name="yes" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "YES"

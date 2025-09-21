@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cun2piwftalg4"]
+
+[ext_resource type="Script" path="res://addons/escoria/scenes/floating.gd" id="1"]
+
+[node name="dialog_label" type="RichTextLabel"]
+custom_minimum_size = Vector2(110, 100)
+anchors_preset = -1
+anchor_right = 0.06
+anchor_bottom = 0.093
+offset_right = 0.799995
+offset_bottom = -24.44
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Here be some text."
+script = ExtResource("1")
+
+[node name="Timer" type="Timer" parent="."]

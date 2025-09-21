@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1ul5qh682qgu"]
+
+[ext_resource type="PackedScene" uid="uid://bnwv7mw7e4mv3" path="res://addons/escoria/ui-library/dialog/action_target_tooltip.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://djla1w44ejyp3" path="res://addons/escoria/ui-library/dialog/9-verb/inventory_ui.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://c05awph703nc1" path="res://addons/escoria/ui-library/dialog/verbs_menu.tscn" id="3"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/dialog/esc_dialog_player.gd" id="4"]
+[ext_resource type="Script" path="res://addons/escoria/ui-library/dialog/9-verb/9verb.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://d1hptg1mm8h2o" path="res://addons/escoria/ui-library/menus/main_menu/main_menu.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://ct0qsrj2gvian" path="res://addons/escoria/ui-library/menus/pause_menu/pause_menu.tscn" id="9"]
+[ext_resource type="Theme" path="res://addons/escoria/assets/theme.tres" id="10"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("5")
+main_menu = NodePath("ui/main_menu")
+pause_menu = NodePath("ui/pause_menu")
+ui_parent_control_node = NodePath("ui/Control")
+
+[node name="dialog_layer" type="CanvasLayer" parent="."]
+
+[node name="ESCDialogsPlayer" type="Control" parent="dialog_layer"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("10")
+script = ExtResource("4")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="ui"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("10")
+
+[node name="panel_down" type="PanelContainer" parent="ui/Control"]
+layout_mode = 0
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/Control/panel_down"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/Control/panel_down/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="tooltip" parent="ui/Control/panel_down/VBoxContainer/MarginContainer" instance=ExtResource("1")]
+custom_minimum_size = Vector2(500, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Test"
+
+[node name="HSeparator" type="HSeparator" parent="ui/Control/panel_down/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/Control/panel_down/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VerbsMargin" type="MarginContainer" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="verbs_menu" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer/VerbsMargin" instance=ExtResource("3")]
+layout_mode = 2
+
+[node name="MainMargin" type="MarginContainer" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer/MainMargin"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer/MainMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MenuButton" type="Button" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer/MainMargin/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="InventoryMargin" type="MarginContainer" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="inventory_ui" parent="ui/Control/panel_down/VBoxContainer/HBoxContainer/InventoryMargin" instance=ExtResource("2")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="main_menu" parent="ui" instance=ExtResource("7")]
+visible = true
+
+[node name="pause_menu" parent="ui" instance=ExtResource("9")]
+theme = ExtResource("10")
+
+[connection signal="pressed" from="ui/Control/panel_down/VBoxContainer/HBoxContainer/MainMargin/VBoxContainer/MarginContainer/MenuButton" to="." method="_on_MenuButton_pressed"]

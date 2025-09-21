@@ -1,0 +1,212 @@
+[gd_scene load_steps=18 format=3 uid="uid://yu73er4kkba2"]
+
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_terrain.gd" id="1"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_exit.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://r15u5b524up7" path="res://game/characters/mark/mark.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://dxrsruii00kfq" path="res://game/rooms/room06/wave.png" id="5"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_room.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://w5ktocqrlnrl" path="res://game/characters/worker/worker.tscn" id="7"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_location.gd" id="9"]
+[ext_resource type="Script" path="res://game/rooms/room06/scenery.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://dgmwugdthoa71" path="res://game/rooms/room06/boat_hull.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://b1cbru7rjh0l" path="res://game/rooms/room06/room6background.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://bls851e31c3cr" path="res://game/rooms/room06/cloud.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://wvdhpdlduly8" path="res://game/rooms/room06/boat.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://b81yi05c85vsf" path="res://game/rooms/room06/locked_door.png" id="16"]
+
+[sub_resource type="NavigationPolygon" id="1"]
+vertices = PackedVector2Array(28, 365, 924, 369, 923, 389, 28, 385)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(28, 365, 924, 369, 923, 389, 28, 385)])
+
+[sub_resource type="Animation" id="2"]
+resource_name = "close_door"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "open_door"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_13a4o"]
+_data = {
+"close_door": SubResource("2"),
+"open_door": SubResource("3")
+}
+
+[node name="room6" type="Node2D"]
+script = ExtResource("6")
+global_id = "room6"
+esc_script = "res://game/rooms/room06/esc/room06.esc"
+player_scene = ExtResource("4")
+camera_limits = Array[Rect2]([Rect2(0, 0, 1280, 555)])
+
+[node name="Room6Background" type="Sprite2D" parent="."]
+texture = ExtResource("12")
+centered = false
+
+[node name="walkable_area" type="Node2D" parent="."]
+script = ExtResource("1")
+scale_min = 0.7
+scale_max = 0.7
+
+[node name="platform" type="NavigationRegion2D" parent="walkable_area"]
+navigation_polygon = SubResource("1")
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="worker" parent="Hotspots" instance=ExtResource("7")]
+position = Vector2(478, 377)
+esc_script = "res://game/rooms/room06/esc/worker.esc"
+interaction_angle = 180
+dialog_color = Color(0.14902, 0.388235, 0.462745, 1)
+
+[node name="Position2D" type="Marker2D" parent="Hotspots/worker"]
+position = Vector2(-111, 2)
+script = ExtResource("9")
+
+[node name="r6_l_exit" type="Area2D" parent="Hotspots"]
+script = ExtResource("3")
+global_id = "r6_l_exit"
+esc_script = "res://game/rooms/room06/esc/left_exit.esc"
+is_exit = true
+tooltip_name = "door"
+default_action = "use"
+
+[node name="ESCLocation" type="Marker2D" parent="Hotspots/r6_l_exit"]
+position = Vector2(59, 375)
+script = ExtResource("9")
+global_id = "r6_l_exit_point"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/r6_l_exit"]
+polygon = PackedVector2Array(23, 384, 21, 183, 41, 167, 64, 163, 88, 168, 103, 183, 107, 385)
+
+[node name="r6_r_exit" type="Area2D" parent="Hotspots"]
+script = ExtResource("3")
+global_id = "r6_r_exit"
+esc_script = "res://game/rooms/room06/esc/r6_door.esc"
+is_exit = true
+tooltip_name = "door"
+default_action = "use"
+
+[node name="Sprite" type="Sprite2D" parent="Hotspots/r6_r_exit"]
+z_index = 11
+position = Vector2(562, 232.5)
+texture = ExtResource("16")
+
+[node name="ESCLocation" type="Marker2D" parent="Hotspots/r6_r_exit"]
+position = Vector2(563, 380)
+script = ExtResource("9")
+global_id = "r6_r_exit_point"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/r6_r_exit"]
+position = Vector2(499, -2)
+polygon = PackedVector2Array(23, 384, 21, 183, 41, 167, 64, 163, 88, 168, 103, 183, 107, 385)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/r6_r_exit"]
+libraries = {
+"": SubResource("AnimationLibrary_13a4o")
+}
+
+[node name="worker_face_down" type="Marker2D" parent="Hotspots"]
+position = Vector2(479, 513)
+script = ExtResource("9")
+global_id = "worker_face_down"
+
+[node name="player_start" type="Marker2D" parent="."]
+position = Vector2(61, 375)
+script = ExtResource("9")
+global_id = "r6_player_start"
+is_start_location = true
+
+[node name="scenery" type="Node2D" parent="."]
+script = ExtResource("10")
+
+[node name="wave3" type="Sprite2D" parent="scenery"]
+modulate = Color(0.00392157, 0.607843, 0.745098, 1)
+z_index = 500
+position = Vector2(958, 677)
+texture = ExtResource("5")
+
+[node name="wave2" type="Sprite2D" parent="scenery"]
+modulate = Color(0, 0.686275, 0.843137, 1)
+z_index = 500
+position = Vector2(882, 753)
+texture = ExtResource("5")
+
+[node name="wave" type="Sprite2D" parent="scenery"]
+z_index = 500
+position = Vector2(804, 789)
+texture = ExtResource("5")
+
+[node name="Polygon2D" type="Polygon2D" parent="scenery/wave"]
+z_index = 500
+color = Color(0, 0.580392, 1, 1)
+polygon = PackedVector2Array(-900, 90, 900, 90, 900, 600, -900, 600)
+
+[node name="cloud" type="Sprite2D" parent="scenery"]
+z_index = 5
+z_as_relative = false
+position = Vector2(1267, 116)
+texture = ExtResource("13")
+
+[node name="cloud2" type="Sprite2D" parent="scenery"]
+z_index = 5
+z_as_relative = false
+position = Vector2(1267, 116)
+texture = ExtResource("13")
+
+[node name="boat_rooms" type="Sprite2D" parent="scenery"]
+z_index = 10
+z_as_relative = false
+position = Vector2(337.5, 152)
+texture = ExtResource("14")
+
+[node name="boat_hull" type="Sprite2D" parent="scenery"]
+z_index = 400
+position = Vector2(640, 427)
+texture = ExtResource("11")
+
+[node name="Text" type="Node2D" parent="."]
+z_index = 10
+
+[node name="Polygon2D" type="Polygon2D" parent="Text"]
+position = Vector2(37, 11)
+color = Color(1, 1, 1, 0.635294)
+polygon = PackedVector2Array(750, 40, 1150, 40, 1150, 200, 750, 200)
+
+[node name="Label" type="Label" parent="Text/Polygon2D"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 751.0
+offset_top = 35.0
+offset_right = 1160.0
+offset_bottom = 188.0
+text = "This room demonstrates using  items taken from 
+another room and combined then given to an NPC
+to advance the level.
+Conversations are also demonstrated with both 
+lines that will be repeated and ones that will only 
+be an option for the player to choose once."

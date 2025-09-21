@@ -1,0 +1,15 @@
+:look
+say player "That button triggers a camera zoom effect."
+
+:use
+# Disable input so all steps run without interruption 
+accept_input NONE
+camera_set_zoom 1.1 0
+wait 1.2
+camera_set_zoom 0.6 0
+wait 1.2
+camera_set_zoom 1 0
+wait 1.2
+camera_set_target 0 player
+# Re-enable user input
+accept_input ALL
