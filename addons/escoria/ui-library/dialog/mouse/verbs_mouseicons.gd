@@ -20,7 +20,7 @@ func _ready():
 		iterate_actions_cursor(UI_ACTIONS_DIRECTION.UP)
 
 func _process(delta):
-	$mouse_position.rect_global_position = get_global_mouse_position()
+	$mouse_position/tool.set_position(get_global_mouse_position())
 
 
 func iterate_actions_cursor(direction: int):

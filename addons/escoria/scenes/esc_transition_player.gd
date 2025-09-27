@@ -41,8 +41,6 @@ func _ready() -> void:
 	color = Color.WHITE
 	color.a = 0
 	mouse_filter = MOUSE_FILTER_IGNORE
-	_tween = get_tree().create_tween()
-	_tween.tween_property(self, "modulate:a", 0.0, 1.0)
 	
 
 
@@ -59,14 +57,6 @@ func transition(
 	mode: int = TRANSITION_MODE.IN,
 	duration: float = 1.0
 ) -> int:
-
-	# We put this here instead of the constructor since if we have it in the
-	# constructor, the transition will ALWAYS happen on game start, which might
-	# not be desired if 'false' is used for automatic_transitions in a
-	# change_scene call in :init.
-	if not _tween:
-		_tween = create_tween()
-		_tween.connect("tween_all_completed", self._on_tween_completed)
 
 	if transition_name.is_empty():
 		transition_name = ESCProjectSettingsManager.get_setting(
@@ -96,27 +86,33 @@ func transition(
 
 	if mode == TRANSITION_MODE.OUT:
 		start = 1.0
-		end = 1.0
+		end = 0.0
 
-	if _tween.is_running():
+	if _tween and _tween.is_running():
 		_was_canceled = true
 		_tween.stop()
 		_tween.kill()
 		emit_signal("transition_done", transition_id-1)
 	
 	_tween = create_tween()
+	_tween.connect("finished", self._on_tween_completed)
 	
-	var shader_mat := $".".material as ShaderMaterial
-	if shader_mat.get("shader_parameter/cutoff") == null:
-		shader_mat.set("shader_parameter/cutoff", 0.0)
+	material = $".".material as ShaderMaterial
+	
+	reset_shader_cutoff()
 
-	_tween.tween_property(shader_mat, 
+	
+	material.set("shader_parameter/cutoff", start)
+
+	_tween.tween_property(
+		material,
 		"shader_parameter/cutoff",
-		start,
-		end
-	)
+		end,
+		duration
+	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
 	_was_canceled = false
-	_tween.play()
+
 	return transition_id
 
 
@@ -131,7 +127,7 @@ func get_transition(name: String) -> String:
 	for directory in ESCProjectSettingsManager.get_setting(
 		ESCProjectSettingsManager.TRANSITION_PATHS
 	):
-		var path = directory + "/" + name + ".material"
+		var path = directory + name + ".material"
 		if ResourceLoader.exists(path):
 			return path
 	return ""
@@ -153,7 +149,6 @@ func has_transition(name: String) -> bool:
 func reset_shader_cutoff() -> void:
 	if not is_instance_valid(material):
 		return
-
 	material.set_shader_parameter("cutoff", 1.0)
 
 

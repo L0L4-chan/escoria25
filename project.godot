@@ -69,7 +69,7 @@ debug/crash_message="We're sorry, but the game crashed. Please send us the follo
 %s"
 debug/enable_room_selector=true
 debug/room_selector_room_dir="res://game/rooms"
-debug/enable_hover_stack_viewer=true
+debug/enable_hover_stack_viewer=false
 ui/default_dialog_type="floating"
 ui/inventory_items_path="res://game/items/inventory/"
 ui/inventory_item_size=Vector2(72, 72)

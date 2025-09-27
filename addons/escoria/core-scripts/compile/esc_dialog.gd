@@ -82,17 +82,16 @@ func run():
 	)
 
 	escoria.current_state = escoria.GAME_STATE.DIALOG
-	escoria.main.current_scene.game.show_dialog_layer()
+	#escoria.main.current_scene.game.show_dialog_layer()
 	
 	if !escoria.dialog_player:
 		escoria.dialog_player = escoria.main.current_scene.get_node(
-			"game/dialog_layer/ESCDiologsPlayer"
+			"game/dialog_layer/ESCDialogsPlayer"
 		)
 
 	escoria.dialog_player.start_dialog_choices(self)
 
 	var option = await escoria.dialog_player.option_chosen as ESCDialogOption
-
 	var rc = ESCExecution.RC_OK
 
 	# If no valid option was returned, it means this level of dialog is done.
@@ -100,7 +99,6 @@ func run():
 	# it is still yielding and so will be shown again.
 	if option:
 		rc = await option.run()
-		rc = await rc.completed
 		if rc != ESCExecution.RC_CANCEL:
 			# We also set this here in case a chosen option doesn't yield, since this block
 			# will return normally and not allow the current_state reset at the bottom of this

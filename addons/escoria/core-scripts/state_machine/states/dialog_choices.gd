@@ -40,5 +40,5 @@ func update(_delta):
 
 		escoria.logger.trace(self, "Dialog State Machine: 'choices' -> 'idle'")
 
-		emit_signal("event_finished", "idle")
+		#emit_signal("event_finished", "idle")
 		_dialog_player.emit_signal("option_chosen", option)

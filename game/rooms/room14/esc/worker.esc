@@ -5,4 +5,4 @@
 	# Blocking command. This will block the queued walk event following this 
 	# (as specified in room14.esc) from starting until this command has
 	# completed.
-	say player "Blocking"
+	say worker "Blocking"

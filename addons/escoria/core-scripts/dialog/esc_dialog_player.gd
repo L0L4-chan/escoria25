@@ -126,14 +126,6 @@ func _determine_say_dialog_manager(type: String) -> void:
 			self,
 			"No dialog manager called '%s' configured." % type
 		)
-	#var screen_size = get_viewport().get_visible_rect().size
-	#var quarter_pos = Vector2(
-	#			screen_size.x * 0.75, 
-	#			screen_size.y * 0.0    
-	#		)
-			
-	#quarter_pos -= dialog_manager.get_rect().size   
-	#dialog_manager.set_position(quarter_pos)
 	_say_dialog_manager = dialog_manager
 
 
@@ -160,14 +152,6 @@ func _determine_choose_dialog_manager(type: String) -> void:
 			self,
 			"No dialog manager called '%s' configured." % type
 		)
-	#var screen_size = get_viewport().get_visible_rect().size
-	#var quarter_pos = Vector2(
-	#			screen_size.x * 0.75, 
-	#			screen_size.y * 0.0    
-	#		)
-			
-	#quarter_pos -= dialog_manager.get_rect().size  
-	#dialog_manager.set_position(quarter_pos)
 	_choose_dialog_manager = dialog_manager
 
 

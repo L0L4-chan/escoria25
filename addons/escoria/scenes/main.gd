@@ -13,7 +13,6 @@ var last_scene_global_id: String
 
 # Current scene room being displayed
 var current_scene: Node
-var current_scene_global_id: String
 # Scene that was previously the current scene.
 var previous_scene: Node
 
@@ -75,8 +74,9 @@ func set_scene(p_scene: Node) -> void:
 		move_child(p_scene, get_child_count() - 1)
 
 	current_scene = p_scene
+	
 	last_scene_global_id = previous_scene.global_id
-	current_scene_global_id = p_scene.global_id
+	current_scene.global_id = p_scene.global_id
 
 
 
@@ -195,7 +195,7 @@ func set_camera_limits(camera_limit_id: int = 0, scene: Node = current_scene) ->
 
 func save_game(p_savegame_res: Resource) -> void:
 	p_savegame_res.main = {
-		ESCSaveGame.MAIN_LAST_SCENE_GLOBAL_ID_KEY: current_scene_global_id,
+		ESCSaveGame.MAIN_LAST_SCENE_GLOBAL_ID_KEY: current_scene.global_id,
 		ESCSaveGame.MAIN_CURRENT_SCENE_FILENAME_KEY: current_scene.scene_file_path \
 				if current_scene != null \
 				else "No current scene (not loaded yet)"

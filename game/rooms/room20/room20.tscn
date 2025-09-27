@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1lmge6ea4igh"]
+[gd_scene load_steps=13 format=3 uid="uid://d1lmge6ea4igh"]
 
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_room.gd" id="1"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_terrain.gd" id="2"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_item.gd" id="3"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_location.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dp6p11gcfi3nf" path="res://game/rooms/room20/assets/walk_behind_tree.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c1bqd4efkro4r" path="res://game/rooms/room20/assets/forrest_height_texture.png" id="7_o4c6v"]
+[ext_resource type="Texture2D" uid="uid://r4f20qpplcbb" path="res://game/rooms/room20/assets/forrest_light_map.png" id="8_t0bhn"]
 [ext_resource type="Texture2D" uid="uid://drdh82082ev21" path="res://icon.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://r15u5b524up7" path="res://game/characters/mark/mark.tscn" id="10"]
 [ext_resource type="Texture2D" uid="uid://vl3yvd0j76h" path="res://game/rooms/room20/assets/forrest.png" id="11"]
@@ -97,6 +99,8 @@ texture = ExtResource("12")
 
 [node name="walkable_area" type="Node2D" parent="."]
 script = ExtResource("2")
+scales = ExtResource("7_o4c6v")
+lightmap = ExtResource("8_t0bhn")
 
 [node name="platform" type="NavigationRegion2D" parent="walkable_area"]
 position = Vector2(6.73163, -264.779)
@@ -144,5 +148,6 @@ script = ExtResource("4")
 
 [node name="walk_behind_tree" type="Sprite2D" parent="."]
 z_index = 366
-position = Vector2(1195, 278)
+position = Vector2(1195, 282.5)
+scale = Vector2(1, 1.22599)
 texture = ExtResource("7")

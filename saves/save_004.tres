@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ESCSaveGame" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/escoria/core-scripts/esc/esc_savegame.gd" id="1_kqha7"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/esc/esc_savegame.gd" id="1_85vog"]
 
 [resource]
-script = ExtResource("1_kqha7")
+script = ExtResource("1_85vog")
 escoria_version = "1.0.0"
 game_version = "1.0"
-name = "autosave1"
+name = "autosave4"
 date = {
 "day": 27,
 "month": 9,
@@ -31,7 +31,7 @@ objects = {
 "_music": {
 "active": true,
 "interactive": true,
-"playback_position": 10.3155,
+"playback_position": 31.3295,
 "state": "res://game/sfx/contemplation.ogg"
 },
 "_sound": {
@@ -138,11 +138,11 @@ events = {
 "from_statement_id": 0,
 "is_completed": false,
 "name": "save_game",
-"parameters": ["1", "\"autosave1\""],
+"parameters": ["4", "\"autosave4\""],
 "source": "",
 "statements": []
 },
-"from_statement_id": 0,
+"from_statement_id": 6,
 "is_completed": false,
 "source": "",
 "statements": [{
@@ -151,7 +151,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "save_game",
 "parameters": ["1", "\"autosave1\""],
 "source": "",
@@ -162,7 +162,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "say",
 "parameters": ["player", "\"This sure looks like room 16.\""],
 "source": "",
@@ -173,7 +173,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "save_game",
 "parameters": ["2", "\"autosave2\""],
 "source": "",
@@ -184,7 +184,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "sched_event",
 "parameters": ["1", "worker1", "r16_worker1_walk"],
 "source": "",
@@ -195,7 +195,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "save_game",
 "parameters": ["3", "\"autosave3\""],
 "source": "",
@@ -206,7 +206,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "sched_event",
 "parameters": ["2", "worker1", "r16_worker2_walk"],
 "source": "",
@@ -241,11 +241,11 @@ events = {
 "from_statement_id": 0,
 "is_completed": false,
 "name": "save_game",
-"parameters": ["1", "\"autosave1\""],
+"parameters": ["4", "\"autosave4\""],
 "source": "",
 "statements": []
 },
-"from_statement_id": 0,
+"from_statement_id": 6,
 "is_completed": false,
 "source": "",
 "statements": [{
@@ -254,7 +254,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "save_game",
 "parameters": ["1", "\"autosave1\""],
 "source": "",
@@ -265,7 +265,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "say",
 "parameters": ["player", "\"This sure looks like room 16.\""],
 "source": "",
@@ -276,7 +276,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "save_game",
 "parameters": ["2", "\"autosave2\""],
 "source": "",
@@ -287,7 +287,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "sched_event",
 "parameters": ["1", "worker1", "r16_worker1_walk"],
 "source": "",
@@ -298,7 +298,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "save_game",
 "parameters": ["3", "\"autosave3\""],
 "source": "",
@@ -309,7 +309,7 @@ events = {
 "conditions": [],
 "current_statement": null,
 "from_statement_id": 0,
-"is_completed": false,
+"is_completed": true,
 "name": "sched_event",
 "parameters": ["2", "worker1", "r16_worker2_walk"],
 "source": "",
@@ -328,7 +328,61 @@ events = {
 }]
 }]
 },
-"sched_events": []
+"sched_events": [{
+"class": "ESCScheduledEvent",
+"event": {
+"_is_interrupted": false,
+"class": "ESCEvent",
+"current_statement": null,
+"flags": 0,
+"from_statement_id": 0,
+"is_completed": false,
+"name": "r16_worker1_walk",
+"original_name": "r16_worker1_walk",
+"source": "res://game/rooms/room16/esc/worker_script.esc",
+"statements": [{
+"_is_interrupted": false,
+"class": "ESCCommand",
+"conditions": [],
+"current_statement": null,
+"from_statement_id": 0,
+"is_completed": false,
+"name": "walk",
+"parameters": ["worker1", "worker1location"],
+"source": "",
+"statements": []
+}]
+},
+"object": "worker1",
+"timeout": 1.0
+}, {
+"class": "ESCScheduledEvent",
+"event": {
+"_is_interrupted": false,
+"class": "ESCEvent",
+"current_statement": null,
+"flags": 0,
+"from_statement_id": 0,
+"is_completed": false,
+"name": "r16_worker2_walk",
+"original_name": "r16_worker2_walk",
+"source": "res://game/rooms/room16/esc/worker_script.esc",
+"statements": [{
+"_is_interrupted": false,
+"class": "ESCCommand",
+"conditions": [],
+"current_statement": null,
+"from_statement_id": 0,
+"is_completed": false,
+"name": "walk",
+"parameters": ["worker2", "worker2location"],
+"source": "",
+"statements": []
+}]
+},
+"object": "worker1",
+"timeout": 2.0
+}]
 }
 terrain_navpolys = {
 "room16": {

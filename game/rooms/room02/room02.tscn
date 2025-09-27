@@ -12,14 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://dbvu4y5p2kwr7" path="res://game/rooms/room02/floor2.png" id="15"]
 
 [sub_resource type="NavigationPolygon" id="1"]
-vertices = PackedVector2Array(10, 378, 86, 337, 88, 374, 8, 545, 121, 355, 488, 354, 409, 546, 1184, 373, 1185, 343, 1272, 393, 1272, 548, 875, 546, 802, 357, 1161, 358)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3, 2), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(10, 11, 12, 13, 7)])
+vertices = PackedVector2Array(1193.8, 379.172, 1194.43, 359.953, 1262, 398.781, 1262, 537.938, 881.867, 536.031, 816.594, 367.039, 1158.01, 367.992, 1183.43, 384.57, 19.9219, 384, 76.8594, 353.289, 78.8906, 390.781, 18.1172, 535.023, 123.688, 364.992, 473.047, 364.039, 402.297, 535.977)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7), PackedInt32Array(2, 3, 7, 0), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 11, 10)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(121, 355, 488, 354, 409, 546, 8, 545, 10, 378, 86, 337, 88, 374), PackedVector2Array(802, 357, 875, 546, 1272, 548, 1272, 393, 1185, 343, 1184, 373, 1161, 358)])
 
 [sub_resource type="NavigationPolygon" id="2"]
-vertices = PackedVector2Array(10, 378, 88, 335, 86, 373, 8, 542, 1185, 374, 1185, 343, 1270, 395, 1272, 545, 114, 355, 1161, 357)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(6, 7, 3, 4), PackedInt32Array(8, 9, 4, 3, 2)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(88, 335, 86, 373, 114, 355, 1161, 357, 1185, 374, 1185, 343, 1270, 395, 1272, 545, 8, 542, 10, 378)])
+vertices = PackedVector2Array(-2.04688, 389.477, 84, 311.539, 84, 361.039, -3.86719, 533.008, 1167.02, 356.969, 1171.78, 310.922, 1260.05, 399.188, 1261.86, 534.977)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(4, 6, 7, 3, 2)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(94, 289, 94, 351, 1158, 347, 1164, 289, 1270, 395, 1272, 545, -14, 543, -12, 385)])
 
 [sub_resource type="Animation" id="5"]
 length = 0.001
@@ -237,7 +237,7 @@ combine_when_selected_action_is_in = PackedStringArray()
 animations = null
 
 [node name="action_pos" type="Marker2D" parent="r_platform"]
-position = Vector2(-414, 10)
+position = Vector2(-300, 10)
 script = ExtResource("7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="r_platform"]
@@ -268,21 +268,23 @@ position = Vector2(4, 112)
 script = ExtResource("8_24fkf")
 global_id = "r2_l_exit"
 esc_script = "res://game/rooms/room02/esc/left_exit.esc"
+is_exit = true
 combine_when_selected_action_is_in = PackedStringArray()
 animations = null
 
 [node name="Position2D" type="Marker2D" parent="l_door"]
-position = Vector2(66, 275)
+position = Vector2(65, 275)
 script = ExtResource("7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="l_door"]
-polygon = PackedVector2Array(1, -2, 100, -49, 100, 240, -3, 308)
+position = Vector2(0, -3.57777)
+scale = Vector2(1, 0.980556)
+polygon = PackedVector2Array(1, -2, 100, -49, 100, 240, 6, 401)
 
 [node name="player_start" type="Marker2D" parent="."]
-position = Vector2(68, 436)
+position = Vector2(80, 436)
 script = ExtResource("7")
 global_id = "r2_player_start"
-is_start_location = true
 
 [node name="walkable_area" type="Node2D" parent="."]
 position = Vector2(6, 301)
@@ -308,6 +310,7 @@ animations = null
 
 [node name="Position2D" type="Marker2D" parent="button_left"]
 position = Vector2(197, -60)
+script = ExtResource("7")
 
 [node name="ESCLocation" type="Marker2D" parent="button_left"]
 position = Vector2(39, 208)
@@ -327,6 +330,7 @@ animations = null
 
 [node name="Position2D" type="Marker2D" parent="button_right2"]
 position = Vector2(-343, 100)
+script = ExtResource("7")
 
 [node name="ESCLocation" type="Marker2D" parent="button_right2"]
 position = Vector2(52, 212)
@@ -351,6 +355,7 @@ libraries = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bridge"]
-position = Vector2(-9.53674e-07, -138.674)
+visible = false
+position = Vector2(500, 430)
 scale = Vector2(1, 0.107054)
-polygon = PackedVector2Array(25, -125, 21, -26, 39, -24)
+polygon = PackedVector2Array(-88, 1167.64, -3, -728.604, 276, -672.558, 361, 1251.7)

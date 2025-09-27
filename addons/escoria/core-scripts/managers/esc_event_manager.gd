@@ -405,7 +405,10 @@ func _on_event_finished(
 		escoria.main.current_scene.game.tooltip_node.show()
 
 	if event_flags & ESCEvent.FLAG_NO_UI:
-		escoria.main.current_scene.game.hide_ui()
+		if finished_statement.name != "show_menu":
+			escoria.main.current_scene.game.show_ui()
+	
+		
 
 	if event_flags & ESCEvent.FLAG_NO_SAVE:
 		escoria.save_manager.save_enabled = true

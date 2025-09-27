@@ -39,7 +39,7 @@ enum EDITOR_GAME_DEBUG_DISPLAY {
 @export var ui_parent_control_node :NodePath
 
 # A reference to the node handling tooltips
-var tooltip_node: Object
+var tooltip_node = ESCTooltip.new()
 
 # Boolean indicating whether the game scene is ready to accept inputs
 # from the player. This enables using escoria.is_ready_for_inputs() in _input()

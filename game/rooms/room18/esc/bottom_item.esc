@@ -1,7 +1,5 @@
 :use
 set_interactive bottom_item false
 set_state bottom_item folded
-
 wait 2
-
-change_scene "res://game/rooms/room20/room20.tscn"
+change_scene "res://game/rooms/room19/room19.tscn"

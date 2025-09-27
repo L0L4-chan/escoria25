@@ -417,8 +417,7 @@ func _perform_script_events(room: ESCRoom):
 
 	# Now that :ready is finished, if FORCE_LAST_SCENE_NULL was true, reset it
 	# to false
-	if escoria.globals_manager.get_global( \
-		escoria.room_manager.GLOBAL_FORCE_LAST_SCENE_NULL):
+	if escoria.globals_manager.get_global(escoria.room_manager.GLOBAL_FORCE_LAST_SCENE_NULL):
 
 		escoria.globals_manager.set_global(
 			escoria.room_manager.GLOBAL_FORCE_LAST_SCENE_NULL,

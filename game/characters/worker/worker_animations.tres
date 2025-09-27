@@ -57,7 +57,7 @@ mirrored = false
 [sub_resource type="Resource" id="11"]
 script = ExtResource("3")
 animation = "walk_right"
-mirrored = false
+mirrored = true
 
 [sub_resource type="Resource" id="12"]
 script = ExtResource("3")
@@ -77,7 +77,7 @@ mirrored = false
 [sub_resource type="Resource" id="15"]
 script = ExtResource("3")
 animation = "walk_right"
-mirrored = true
+mirrored = false
 
 [sub_resource type="Resource" id="16"]
 script = ExtResource("3")

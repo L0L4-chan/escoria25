@@ -3,7 +3,7 @@ render_mode unshaded;
 
 uniform float cutoff : hint_range(0.0, 1.0) = 0.0;
 uniform float smooth_size : hint_range(0.0, 1.0) = 1.0;
-uniform sampler2D mask: source_color;
+uniform sampler2D mask;
 
 uniform vec4 color : source_color;
 

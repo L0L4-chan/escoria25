@@ -69,7 +69,7 @@ var _is_gamepad_connected = false
 
 # Tracks the mouse's current position onscreen.
 var _current_mouse_pos = Vector2.ZERO
-
+var room_select
 
 func _ready():
 	super._ready()
@@ -80,14 +80,10 @@ func _enter_tree():
 	super._enter_tree()
 	var room_selector_parent = $ui/ui/HBoxContainer/VBoxContainer
 
-	if ESCProjectSettingsManager.get_setting(ESCProjectSettingsManager.ENABLE_ROOM_SELECTOR) \
-		and room_selector_parent.get_node_or_null("room_select") == null:
-
-		room_selector_parent.add_child(
-			preload(
-				"res://addons/escoria/ui-library/tools/room_select/room_select.tscn"
-			).instantiate()
-		)
+	if ProjectSettings.get_setting(ESCProjectSettingsManager.ENABLE_ROOM_SELECTOR) and \
+			room_selector_parent.get_node_or_null("room_select") == null:
+		room_select = preload("res://addons/escoria/ui-library/tools/room_select/room_select.tscn").instantiate()
+		room_selector_parent.add_child(room_select)
 
 	var input_handler = Callable(self, "_process_input")
 	escoria.inputs_manager.register_custom_input_handler(input_handler)
@@ -107,14 +103,11 @@ func _exit_tree():
 
 
 func _input(event: InputEvent) -> void:
-	if escoria.get_escoria().is_ready_for_inputs():
+	if escoria.is_ready_for_inputs():
 		if event is InputEventMouseMotion:
 			_current_mouse_pos = get_global_mouse_position()
 			update_tooltip_following_mouse_position()
 
-
-# https://github.com/godotengine/godot-demo-projects/blob/3.4-585455e/misc/joypads/joypads.gd
-# was informative in wiring up the gamepad properly.
 
 func _on_gamepad_connected():
 	set_physics_process(true)
@@ -368,10 +361,9 @@ func get_custom_data() -> Dictionary:
 
 # Update the tooltip
 func update_tooltip_following_mouse_position():
-	var corrected_position = _current_mouse_pos \
-		- Vector2(
-			tooltip_node.rect_size.x / 2,
-			tooltip_node.rect_size.y / 2
+	var corrected_position = _current_mouse_pos - Vector2(
+			tooltip_node.size.x / 2,
+			tooltip_node.size.y / 2
 		)
 
 	# clamp TOP
@@ -379,18 +371,18 @@ func update_tooltip_following_mouse_position():
 		corrected_position.y = mouse_tooltip_margin
 
 	# clamp BOTTOM
-	if tooltip_node.tooltip_distance_to_edge_bottom(_current_mouse_pos + tooltip_node.rect_size) <= mouse_tooltip_margin:
-		corrected_position.y = escoria.game_size.y - mouse_tooltip_margin - tooltip_node.rect_size.y
+	if tooltip_node.tooltip_distance_to_edge_bottom(_current_mouse_pos + tooltip_node.size) <= mouse_tooltip_margin:
+		corrected_position.y = escoria.game_size.y - mouse_tooltip_margin - tooltip_node.size.y
 
 	# clamp LEFT
-	if tooltip_node.tooltip_distance_to_edge_left(_current_mouse_pos - tooltip_node.rect_size/2) <= mouse_tooltip_margin:
+	if tooltip_node.tooltip_distance_to_edge_left(_current_mouse_pos - tooltip_node.size/2) <= mouse_tooltip_margin:
 		corrected_position.x = mouse_tooltip_margin
 
 	# clamp RIGHT
-	if tooltip_node.tooltip_distance_to_edge_right(_current_mouse_pos + tooltip_node.rect_size/2) <= mouse_tooltip_margin:
-		corrected_position.x = escoria.game_size.x - mouse_tooltip_margin - tooltip_node.rect_size.x
+	if tooltip_node.tooltip_distance_to_edge_right(_current_mouse_pos + tooltip_node.size/2) <= mouse_tooltip_margin:
+		corrected_position.x = escoria.game_size.x - mouse_tooltip_margin - tooltip_node.size.x
 
-	tooltip_node.rect_position = corrected_position + tooltip_node.offset_from_cursor
+	tooltip_node.position = corrected_position + tooltip_node.offset_from_cursor
 
 
 func _on_action_finished():

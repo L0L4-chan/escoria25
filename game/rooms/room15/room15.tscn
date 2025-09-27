@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://0xm4rddxfgf0" path="res://game/rooms/room15/room15scale.png" id="10"]
 
 [sub_resource type="NavigationPolygon" id="1"]
-vertices = PackedVector2Array(849.268, 604.779, 878.268, 604.779, 877.809, 609.779, 848.967, 609.779, 448.544, 609.779, 448.268, 604.779, 476.268, 604.779, 476.638, 609.779, 1264.27, 831.779, 0.26837, 834.779, 1.26837, 741.779, 302.268, 656.779, 339.268, 609.779, 359.021, 609.779, 359.268, 605.779, 387.268, 605.779, 388.268, 609.779, 490.268, 633.779, 485.268, 609.779, 778.268, 634.779, 995.268, 662.779, 1265.27, 738.779, 794.268, 609.779, 903.268, 609.779)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(8, 11, 12, 13), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(8, 13, 16, 17), PackedInt32Array(7, 18, 17), PackedInt32Array(19, 20, 21, 8, 17), PackedInt32Array(4, 7, 17), PackedInt32Array(19, 22, 3), PackedInt32Array(2, 23, 20, 19), PackedInt32Array(16, 4, 17), PackedInt32Array(2, 19, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1.26837, 741.779, 302.268, 656.779, 339.268, 609.779, 359.021, 609.779, 359.268, 605.779, 387.268, 605.779, 388.268, 609.779, 448.544, 609.779, 448.268, 604.779, 476.268, 604.779, 476.638, 609.779, 485.268, 609.779, 490.268, 633.779, 778.268, 634.779, 794.268, 609.779, 848.967, 609.779, 849.268, 604.779, 878.268, 604.779, 877.809, 609.779, 903.268, 609.779, 995.268, 662.779, 1265.27, 738.779, 1264.27, 831.779, 0.26837, 834.779)])
+vertices = PackedVector2Array(859.633, 619.781, 858.93, 608.781, 871.219, 608.781, 872.18, 618.383, 991.359, 672.07, 1255.18, 746.328, 1254.37, 821.797, 10.3672, 824.75, 11.1875, 749.242, 317.367, 657.094, 483.273, 640.641, 783.688, 644.859, 341.57, 606.742, 483.273, 605.844, 900.391, 619.656, 799.742, 619.781)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9, 10, 11), PackedInt32Array(12, 13, 10, 9), PackedInt32Array(3, 14, 4, 11, 0), PackedInt32Array(0, 11, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1.26837, 741.779, 310.268, 648.779, 335.268, 596.779, 493.268, 595.779, 493.268, 630.779, 778.268, 634.779, 794.268, 609.779, 848.967, 609.779, 848.268, 598.779, 880.268, 598.779, 881.268, 608.779, 903.268, 609.779, 995.268, 662.779, 1265.27, 738.779, 1264.27, 831.779, 0.26837, 834.779)])
 
 [node name="room15" type="Node2D"]
 script = ExtResource("6")
@@ -146,7 +146,7 @@ combine_when_selected_action_is_in = PackedStringArray()
 animations = null
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/say_long_left"]
-polygon = PackedVector2Array(12, 0, 30, 0, 30, 460, 12, 460)
+polygon = PackedVector2Array(4, 2, 112, -3, 117, 449, 17, 447)
 
 [node name="ESCLocation" type="Marker2D" parent="Hotspots/say_long_left"]
 position = Vector2(113, 479)
@@ -163,7 +163,7 @@ combine_when_selected_action_is_in = PackedStringArray()
 animations = null
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/say_long_right"]
-polygon = PackedVector2Array(1252, -1, 1272, 0, 1272, 461, 1255, 461)
+polygon = PackedVector2Array(1139, 7, 1272, 0, 1270, 447, 1154, 441)
 
 [node name="ESCLocation" type="Marker2D" parent="Hotspots/say_long_right"]
 position = Vector2(1142, 491)
@@ -181,6 +181,7 @@ animations = null
 
 [node name="Position2D" type="Marker2D" parent="switch_animation"]
 position = Vector2(470, 342)
+script = ExtResource("5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="switch_animation"]
-polygon = PackedVector2Array(451, 270, 485, 270, 487, 343, 452, 343)
+polygon = PackedVector2Array(451, 270, 485, 270, 486, 344, 448, 343)

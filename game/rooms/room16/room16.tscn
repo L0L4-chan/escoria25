@@ -83,12 +83,13 @@ global_id = "start"
 is_start_location = true
 
 [node name="current_scene_button" parent="." instance=ExtResource("9")]
-position = Vector2(30, 0)
+position = Vector2(84, 3)
 global_id = "current_scene_button"
 esc_script = "res://game/rooms/room16/esc/current_scene_button.esc"
 
 [node name="Position2D" type="Marker2D" parent="current_scene_button"]
 position = Vector2(336, 384)
+script = ExtResource("5")
 
 [node name="Label" type="Label" parent="current_scene_button"]
 offset_left = 284.0

@@ -46,9 +46,10 @@ func show_chooser():
 			_option_node.button_mask = MOUSE_BUTTON_MASK_LEFT
 			_option_node.action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
 			_option_node.set_process_input(true)
+			_option_node.process_mode = Node.PROCESS_MODE_ALWAYS
 			_option_node.z_index = 100
 			_vbox.add_child(_option_node)
-			_option_node.pressed.connect(self._on_answer_selected.bind(_option_node.text))
+			_option_node.pressed.connect(self._on_answer_selected.bind((option as ESCDialogOption)))
 			
 
 	# If we've no options left, signify as much and start the timer with a
@@ -59,6 +60,9 @@ func show_chooser():
 		_no_more_options = true
 		$Timer.start(0.05)
 		return
+	
+	if _vbox.get_child_count() > 0:
+		_vbox.get_child(0).grab_focus()
 
 	if self.dialog.avatar != "-":
 		$AvatarContainer.add_child(
@@ -70,6 +74,7 @@ func show_chooser():
 	if self.dialog.timeout > 0:
 		$Timer.start(self.dialog.timeout)
 
+	
 # Hide the chooser
 func hide_chooser():
 	$MarginContainer.hide()
