@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://dtcbevno7rrnp"]
+[gd_scene load_steps=28 format=3 uid="uid://dtcbevno7rrnp"]
 
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_terrain.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://r15u5b524up7" path="res://game/characters/mark/mark.tscn" id="4"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_item.gd" id="5"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_room.gd" id="6"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_location.gd" id="8"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_dialog_location.gd" id="9_jutn3"]
 [ext_resource type="Texture2D" uid="uid://c5lqc0i2mlotn" path="res://game/rooms/room03/room3chasm.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://c8fnkaiuwcrvr" path="res://game/rooms/room03/room3bridge.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://1nkglnvpcciw" path="res://game/rooms/room03/room3background.png" id="12"]
@@ -334,6 +335,10 @@ offset_right = 514.0
 offset_bottom = 295.0
 text = "I know, this isn't logical - but you
 should try talking to this button..."
+
+[node name="Marker2D" type="Marker2D" parent="r3_button"]
+position = Vector2(505, 137)
+script = ExtResource("9_jutn3")
 
 [node name="ESCTerrain" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_23uve")

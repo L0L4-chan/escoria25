@@ -4,15 +4,12 @@
 extends Node2D
 class_name ESCTerrain 
 
-
 # Visualize scales or the lightmap for debugging purposes
 enum DebugMode {
 	NONE,
 	SCALES,
 	LIGHTMAP
 }
-
-
 
 # Scaling texture
 @export var scales : Texture : set = _set_scales
@@ -41,9 +38,6 @@ enum DebugMode {
 
 # Currently selected debug visualize mode
 @export_enum("None", "Scales", "Lightmap") var debug_mode : int = DebugMode.NONE : set = _set_debug_mode
-
-
-
 
 # The currently activ navigation polygon
 var current_active_navigation_instance: NavigationRegion2D = null
@@ -86,10 +80,6 @@ func get_children_navpolys() -> Array:
 
 # Checks whether multiple navigation polygons are enabled.
 # Shows a warning in the terminal if this happens.
-# TODO: change this "simple" console log for an editor warning
-# by overriding Node._get_configuration_warning() after we get rid of
-# deprecated Navigation2D.
-#
 # #### Parameters
 #
 # - node: if this method is triggered by child_entered_tree or
@@ -189,7 +179,6 @@ func get_terrain(pos: Vector2) -> float:
 func _get_color(image: Image, pos: Vector2) -> Color:
 	var x = int(pos.x)
 	var y = int(pos.y)
-	#print("Mapped pixel: ", x," ", y, " Image scale: ", escoria.main.current_scene.player.scale)
 	return image.get_pixel(int(pos.x), int(pos.y))
 
 

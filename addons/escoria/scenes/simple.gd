@@ -27,9 +27,7 @@ func show_chooser():
 	var _vbox = $MarginContainer/ScrollContainer/VBoxContainer
 	for option_node in _vbox.get_children():
 		_vbox.remove_child(option_node)
-
 	_remove_avatar()
-
 	for option in self.dialog.options:
 		if option.is_valid():
 			var _option_node = Button.new()
@@ -50,27 +48,16 @@ func show_chooser():
 			_option_node.z_index = 100
 			_vbox.add_child(_option_node)
 			_option_node.pressed.connect(self._on_answer_selected.bind((option as ESCDialogOption)))
-			
-
-	# If we've no options left, signify as much and start the timer with a
-	# very short interval so the appropriate signal can be fired. Note that
-	# we have to fire the signal AFTER this method returns as the caller
-	# is almost certainly yielding after this method returns.
 	if _vbox.get_child_count() == 0:
 		_no_more_options = true
 		$Timer.start(0.05)
 		return
-	
 	if _vbox.get_child_count() > 0:
 		_vbox.get_child(0).grab_focus()
-
 	if self.dialog.avatar != "-":
 		$AvatarContainer.add_child(
-			ResourceLoader.load(self.dialog.avatar).instantiate()
-		)
-
+			ResourceLoader.load(self.dialog.avatar).instantiate())
 	$MarginContainer.show()
-
 	if self.dialog.timeout > 0:
 		$Timer.start(self.dialog.timeout)
 

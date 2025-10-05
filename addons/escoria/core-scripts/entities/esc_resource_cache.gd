@@ -2,7 +2,7 @@
 extends Node
 class_name ESCResourceCache
 
-
+# signals
 signal resource_loading_progress(path, progress)
 signal resource_loading_done(path)
 signal resource_queue_progress(queue_size)
@@ -11,7 +11,7 @@ signal resource_queue_progress(queue_size)
 var queue: Array = []
 var pending: Dictionary = {}
 
-
+# Load and storage the reources
 func queue_resource(path: String, p_in_front: bool = false, p_permanent: bool = false):
 	if path in pending:
 		return
@@ -28,23 +28,21 @@ func queue_resource(path: String, p_in_front: bool = false, p_permanent: bool = 
 			queue.push_back(res)
 		pending[path] = ESCResourceDescriptor.new(res, p_permanent)
 
-
+# Delete de resources from the list
 func cancel_resource(path):
 	if path in pending:
 		if pending[path].res is ResourceLoader:
 			queue.erase(pending[path].res)
 		pending.erase(path)
 
-
+# Empty all the resources list
 func clear():
 	for p in pending.keys():
 		if pending[p].permanent:
 			continue
 		cancel_resource(p)
-	#queue = []
-	#pending = {}
 
-
+# Check and emmit a signal depending on the state of the resource
 func get_progress(path):
 	var ret = -1
 	if path in pending:
@@ -57,7 +55,6 @@ func get_progress(path):
 
 	return ret
 
-
 func is_ready(path):
 	var ret
 
@@ -68,7 +65,6 @@ func is_ready(path):
 
 	return ret
 
-
 func _wait_for_resource(res, path):
 	while true:
 		RenderingServer.force_sync()
@@ -76,7 +72,6 @@ func _wait_for_resource(res, path):
 
 		if queue.size() == 0 || queue[0] != res:
 			return pending[path].res
-
 
 func get_resource(path):
 	if path in pending:
@@ -101,34 +96,23 @@ func get_resource(path):
 
 			return res
 	else:
-		# We can't use ESCProjectSettingsManager here since this method
-		# can be called from escoria._init()
 		if not ProjectSettings.get_setting("escoria/platform/skip_cache"):
 			var res = ResourceLoader.load(path)
 			pending[path] = ESCResourceDescriptor.new(res, true)
 			return res
 		return ResourceLoader.load(path)
 
-
 func print_progress(p_path, p_progress):
 	printt(p_path, "loading", round(p_progress * 100), "%")
-
 
 func res_loaded(p_path):
 	printt("loaded resource", p_path)
 
-
 func print_queue_progress(p_queue_size):
 	printt("queue size:", p_queue_size)
 
-
 func start():
 	pass
-	## Uncomment these for debug, or wait for someone to implement log levels
-	# connect("resource_loading_progress", self, "print_progress")
-	# connect("resource_loading_done", self, "res_loaded")
-	# connect("resource_queue_progress", self, "print_queue_progress")
-
 
 func _process(_delta) -> void:
 	while queue.size() > 0:

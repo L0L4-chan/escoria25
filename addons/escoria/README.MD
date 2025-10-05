@@ -93,6 +93,12 @@ See the **Configuration Table** for all available options.
 4. Configure dialog manager and text speed if using dialogs.
 5. Use debug options during development (room selector, logs).
 
+
+## Help us Improve
+
+If you have problems with using this please, open a ticket on this repository.
+
+
 ---
 
 # Versión en Español
@@ -184,3 +190,9 @@ Al activar el plugin se crearán nuevas categorías en **Project Settings** para
 3. Ajusta idioma, sonidos, transiciones y UI.
 4. Configura el dialog manager y la velocidad de texto si usas diálogos.
 5. Usa las opciones de debug durante el desarrollo (selector de escenas, logs).
+
+
+## Ayúdanos a mejorar
+
+Si experimentas algun problema usando este plugin, por favor, abre un ticket.
+

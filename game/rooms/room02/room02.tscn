@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bs3eicd7jy5l4"]
+[gd_scene load_steps=18 format=3 uid="uid://bs3eicd7jy5l4"]
 
 [ext_resource type="PackedScene" uid="uid://r15u5b524up7" path="res://game/characters/mark/mark.tscn" id="4"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_room.gd" id="6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_item.gd" id="8_24fkf"]
 [ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_terrain.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://cdj2414gs76px" path="res://game/rooms/room02/room2background.png" id="11"]
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/entities/esc_dialog_location.gd" id="11_r3meo"]
 [ext_resource type="Texture2D" uid="uid://dmm7fgou21fm6" path="res://game/rooms/room02/floor3.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://c063dm4q0tx71" path="res://game/rooms/room02/floor1.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://26h0v5oqj8ol" path="res://game/rooms/room02/floor4.png" id="14"]
@@ -310,7 +311,7 @@ animations = null
 
 [node name="Position2D" type="Marker2D" parent="button_left"]
 position = Vector2(197, -60)
-script = ExtResource("7")
+script = ExtResource("11_r3meo")
 
 [node name="ESCLocation" type="Marker2D" parent="button_left"]
 position = Vector2(39, 208)
@@ -330,7 +331,7 @@ animations = null
 
 [node name="Position2D" type="Marker2D" parent="button_right2"]
 position = Vector2(-343, 100)
-script = ExtResource("7")
+script = ExtResource("11_r3meo")
 
 [node name="ESCLocation" type="Marker2D" parent="button_right2"]
 position = Vector2(52, 212)

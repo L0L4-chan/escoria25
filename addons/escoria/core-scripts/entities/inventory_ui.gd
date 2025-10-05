@@ -21,7 +21,6 @@ func _ready():
 	elif has_node("ScrollContainer/GridContainer"):  # Caso: UI de tipo teclado
 		inventory_ui_container = "ScrollContainer/GridContainer"
 
-	
 	if inventory_ui_container == null or inventory_ui_container.is_empty():
 		escoria.logger.error(
 			self,

@@ -80,7 +80,6 @@ func register_core():
 		self._on_pause_menu_requested
 	)
 
-
 # Connect the item signals to the local methods
 func register_inventory_item(item: Node):
 	item.connect(
@@ -105,7 +104,6 @@ func register_inventory_item(item: Node):
 		self._on_mouse_exited_inventory_item
 	)
 
-
 func register_background(background: ESCBackground):
 	background.connect(
 		"left_click_on_bg",
@@ -121,7 +119,6 @@ func register_background(background: ESCBackground):
 	)
 	background.mouse_wheel_up.connect(_on_mousewheel_action.bind(1))
 	background.mouse_wheel_down.connect(_on_mousewheel_action.bind(-1))
-
 
 # Registers a function that can be used to intercept and process input events.
 # `callback` must have the following signature:
@@ -142,7 +139,6 @@ func register_background(background: ESCBackground):
 func register_custom_input_handler(callback) -> void:
 	custom_input_handler = callback
 
-
 # If a callback was specified via `register_custom_input_handler()`,
 # forwards the event to the callback and returns its result; otherwise,
 # returns `false`.
@@ -159,14 +155,12 @@ func try_custom_input_handler(event: InputEvent, is_default_state: bool) -> bool
 	else:
 		return false
 
-
 # Callback called by hover stack content change.
 func _on_hover_stack_changed():
 	if hover_stack.hover_stack.is_empty():
 		unset_hovered_node(_hovered_element)
 	else:
 		set_hovered_node(hover_stack.get_top_item())
-
 
 # Sets the hovered node and calls its mouse_entered() method if it was the top
 # most item in hover_stack.
@@ -200,7 +194,6 @@ func set_hovered_node(item: ESCItem) -> bool:
 	else:
 		return false
 
-
 # Unsets the hovered node.
 #
 # **Parameters**
@@ -213,7 +206,6 @@ func unset_hovered_node(item: ESCItem):
 		_hovered_element.mouse_exited()
 		_hovered_element = null
 		hotspot_focused = ""
-
 
 # The background was clicked with the LMB
 #
@@ -229,7 +221,6 @@ func _on_left_click_on_bg(position: Vector2) -> void:
 		)
 		escoria.main.current_scene.game.left_click_on_bg(position)
 
-
 # The background was double-clicked with the LMB
 #
 # #### Parameters
@@ -244,7 +235,6 @@ func _on_double_left_click_on_bg(position: Vector2) -> void:
 		)
 		escoria.main.current_scene.game.left_double_click_on_bg(position)
 
-
 # The background was clicked with the RMB
 #
 # #### Parameters
@@ -257,7 +247,6 @@ func _on_right_click_on_bg(position: Vector2) -> void:
 			"Right click on background at %s." % str(position)
 		)
 		escoria.main.current_scene.game.right_click_on_bg(position)
-
 
 # An inventory item was clicked with the LMB
 #
@@ -277,7 +266,6 @@ func _on_mouse_left_click_inventory_item(
 		inventory_item_global_id,
 		event
 	)
-
 
 # An inventory item was clicked with the RMB
 #
@@ -299,7 +287,6 @@ func _on_mouse_right_click_inventory_item(
 			event
 		)
 
-
 # An inventory item was doublce-clicked with the LMB
 #
 # #### Parameters
@@ -320,7 +307,6 @@ func _on_mouse_double_left_click_inventory_item(
 			event
 		)
 
-
 # The mouse entered an inventory item
 #
 # #### Parameters
@@ -336,7 +322,6 @@ func _on_mouse_entered_inventory_item(inventory_item_global_id: String) -> void:
 		inventory_item_global_id
 	)
 
-
 # The mouse exited an inventory item
 func _on_mouse_exited_inventory_item() -> void:
 	escoria.logger.info(
@@ -344,7 +329,6 @@ func _on_mouse_exited_inventory_item() -> void:
 		"Inventory item unfocused."
 	)
 	escoria.main.current_scene.game.inventory_item_unfocused()
-
 
 # The mouse entered an Escoria item
 #
@@ -380,7 +364,6 @@ func _on_mouse_entered_item(item: ESCItem) -> void:
 	hotspot_focused = item.global_id
 	escoria.main.current_scene.game.element_focused(item.global_id)
 
-
 # The mouse exited an Escoria item
 #
 # #### Parameters
@@ -410,7 +393,6 @@ func _on_mouse_exited_item(item: ESCItem) -> void:
 	else:
 		hotspot_focused = hover_stack.get_top_item().global_id
 		escoria.main.current_scene.game.element_focused(hotspot_focused)
-
 
 # Function called when the item is set interactive, to re-trigger an input on
 # underlying item.
@@ -471,7 +453,6 @@ func _on_mouse_left_clicked_item(item: ESCItem, event: InputEvent) -> void:
 			event
 		)
 
-
 # An Escoria item was double-clicked with the LMB
 #
 # #### Parameters
@@ -514,7 +495,6 @@ func _on_mouse_left_double_clicked_item(
 			item.global_id,
 			event
 		)
-
 
 # An Escoria item was clicked with the RMB
 #
@@ -573,8 +553,6 @@ func _on_mouse_right_clicked_item(item: ESCItem, event: InputEvent) -> void:
 				event
 			)
 
-
-
 # The mousewheel was turned
 #
 # #### Parameters
@@ -583,15 +561,12 @@ func _on_mouse_right_clicked_item(item: ESCItem, event: InputEvent) -> void:
 func _on_mousewheel_action(direction: int):
 	escoria.main.current_scene.game.mousewheel_action(direction)
 
-
 # Event when the pause menu was requested
 func _on_pause_menu_requested():
 	escoria.main.current_scene.game.pause_game()
 
-
 # Hover Stack implementation.
 class HoverStack:
-
 
 	# Emitted when the content of the hover stack has changed
 	signal hover_stack_changed
@@ -599,10 +574,8 @@ class HoverStack:
 	# Emitted when the hover stack was emptied
 	signal hover_stack_emptied
 
-
 	# Array representing the hover stack
 	var hover_stack: Array = []
-
 
 	# Add the given item to the stack if not already in it.
 	#
@@ -616,7 +589,6 @@ class HoverStack:
 			_sort()
 			emit_signal("hover_stack_changed")
 
-
 	# Add the items contained in given list to the stack if not already in it.
 	#
 	# #### Parameters
@@ -626,14 +598,12 @@ class HoverStack:
 			if escoria.action_manager.is_object_actionable(item.global_id):
 				add_item(item)
 
-
 	# Clean the hover stack
 	func clean():
 		for e in hover_stack:
 			if e == null or !is_instance_valid(e):
 				hover_stack.erase(e)
 				emit_signal("hover_stack_changed")
-
 
 	# Pops the top element of the hover stack and returns it
 	#
@@ -645,14 +615,12 @@ class HoverStack:
 			emit_signal("hover_stack_changed")
 		return ret
 
-
 	# Returns the top element of the hover stack a
 	#
 	# **Returns**
 	# The top element of the hover stack
 	func get_top_item():
 		return hover_stack.back()
-
 
 	# Remove the given item from the stack
 	#
@@ -664,12 +632,10 @@ class HoverStack:
 			_sort()
 			emit_signal("hover_stack_changed")
 
-
 	# Clear the stack of hovered items
 	func clear():
 		hover_stack = []
 		emit_signal("hover_stack_emptied")
-
 
 	# Returns true if the hover stack is empty, else false
 	#
@@ -678,11 +644,9 @@ class HoverStack:
 	func empty() -> bool:
 		return hover_stack.is_empty()
 
-
 	# Sort the hover stack by items' z-index
 	func _sort():
 		hover_stack.sort_custom(HoverStackSorter.sort_ascending_z_index)
-
 
 	# Returns true if the hover stack contains the given item
 	#
@@ -693,7 +657,6 @@ class HoverStack:
 	# True if hover stack contains given item, else false
 	func has(item) -> bool:
 		return hover_stack.has(item)
-
 
 	# Returns the hover stack array
 	#

@@ -8,7 +8,7 @@
 extends Marker2D
 class_name ESCLocation
 
-
+#Signal 
 signal is_start_location_set
 
 
@@ -53,25 +53,25 @@ func _ready():
 				)
 			)
 
-
+# On enter active tree
 func _exit_tree():
 	if Engine.is_editor_hint():
 		if is_start_location:
 			emit_signal("is_start_location_set", self)
 
-
+# Warning message
 func _get_configuration_warning():
 	if _multiple_start_locations_exist:
 		return MULTIPLE_START_LOCATIONS_WARNING
 
-	return ""
+	return "There is only one start location"
 
-
+# Setter, Warning it is not recomended have more than one start location on the room
 func set_multiple_locations_exist(value: bool) -> void:
 	_multiple_start_locations_exist = value
 	update_configuration_warnings()
 
-
+# Setter of the Start location
 func set_is_start_location(value: bool) -> void:
 	is_start_location = value
 

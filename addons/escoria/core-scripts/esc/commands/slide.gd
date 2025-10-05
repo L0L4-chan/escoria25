@@ -87,11 +87,8 @@ func _slide_object(
 		destination.node.global_position,
 		duration
 	)
-
 	tween.play()
-
 	_tweens[source.global_id] = tween
-
 	return tween
 
 

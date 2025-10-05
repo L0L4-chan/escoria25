@@ -42,7 +42,7 @@ var last_scale: Vector2
 # Whether the current direction animation is flipped
 var is_mirrored: bool
 
-
+# Value for the speed
 var _orig_speed: float = 0.0
 
 
