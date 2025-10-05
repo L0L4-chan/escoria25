@@ -31,6 +31,8 @@ Its purpose is to centralize project settings for games developed with Escoria.
 
 Activating the plugin will create new categories in **Project Settings** to configure different aspects of Escoria.
 
+See the **Configuration Table** for all available options.
+
 ### Configuration Table
 
 | Category       | Setting Name                      | Type             | Description                                   |

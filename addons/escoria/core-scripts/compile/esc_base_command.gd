@@ -9,17 +9,15 @@ class_name ESCBaseCommand
 const PATH_REGEX_GROUP = "path"
 const FILE_REGEX_GROUP = "file"
 const EXTENSION_REGEX_GROUP = "extension"
-#const COMMAND_NAME_REGEX = "(?<"+ PATH_REGEX_GROUP + ">.*/)(?<" + FILE_REGEX_GROUP + ">[^/]+?)(?<"+ EXTENSION_REGEX_GROUP+">\\.[^.]*$|$)" 
 const COMMAND_NAME_REGEX = "(?<path>.*/)(?<file>[^/]+)(?<extension>\\.[^.]+$|$)"
 
 
 # Regex matcher for command names
 var command_name_regex: RegEx = RegEx.new()
 
-
+# Initialized the compiler with the regular expression that our commands must follow
 func _init() -> void:
 	command_name_regex.compile(COMMAND_NAME_REGEX)
-
 
 # Return the descriptor of the arguments of this command
 func configure() -> ESCCommandArgumentDescriptor:
@@ -29,11 +27,9 @@ func configure() -> ESCCommandArgumentDescriptor:
 	)
 	return ESCCommandArgumentDescriptor.new()
 
-
 # Validate whether the given arguments match the command descriptor
 func validate(arguments: Array) -> bool:
 	return self.configure().validate(get_command_name(), arguments)
-
 
 # Run the command
 func run(command_params: Array) -> int:
@@ -43,17 +39,11 @@ func run(command_params: Array) -> int:
 	)
 	return 0
 
-
 # Return the name of the command based on the script's filename
 func get_command_name() -> String:
 	var path = self.get_script().get_path()
-	var file = path.get_file()        # "transition.gd"
+	var file = path.get_file()      
 	return file.get_basename() 
-	#var path = self.get_script().get_path()
-	#var name = command_name_regex.search(path)
-	#var st =  name.get_string(FILE_REGEX_GROUP)
-	#return st
-
 
 # Function called when the command is interrupted.
 func interrupt():

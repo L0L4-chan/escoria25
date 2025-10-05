@@ -51,18 +51,6 @@ var _current_indent = 0
 
 
 func _init():
-	# Assure command list preference
-	# (we use ProjectSettings instead of ESCProjectSettingsManager
-	# here because this is called from escoria._init())
-	if not ProjectSettings.has_setting(COMMAND_DIRECTORIES):
-		ProjectSettings.set_setting(COMMAND_DIRECTORIES, [
-			"res://addons/escoria/core-scripts/esc/commands"
-		])
-		var property_info = {
-			"name": COMMAND_DIRECTORIES,
-			"type": TYPE_PACKED_STRING_ARRAY
-		}
-		ProjectSettings.add_property_info(property_info)
 
 	# Compile all regex objects just once
 	_comment_regex = RegEx.new()

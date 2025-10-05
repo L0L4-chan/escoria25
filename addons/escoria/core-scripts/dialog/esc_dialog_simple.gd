@@ -99,10 +99,6 @@ func say(dialog_player: Node, global_id: String, text: String, type: String):
 
 	state_machine._change_state("say")
 
-#	yield(_type_player, "say_finished")
-#	if _dialog_player.get_children().has(_type_player):
-#		_dialog_player.remove_child(_type_player)
-#		emit_signal("say_finished")
 
 
 func do_say(global_id: String, text: String) -> void:

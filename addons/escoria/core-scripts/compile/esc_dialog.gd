@@ -82,7 +82,6 @@ func run():
 	)
 
 	escoria.current_state = escoria.GAME_STATE.DIALOG
-	#escoria.main.current_scene.game.show_dialog_layer()
 	
 	if !escoria.dialog_player:
 		escoria.dialog_player = escoria.main.current_scene.get_node(

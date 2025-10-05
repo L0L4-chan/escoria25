@@ -14,7 +14,6 @@ enum {
 
 
 # Regex that matches condition lines
-# Regex that matches condition lines
 const REGEX := """^(?<is_negated>!)?(?<comparison>eq|gt|lt)? ?(?<is_inventory>i/)?(?<is_activity>a/)?(?<flag>[^ ]+)( (?<comparison_value>.+))?$"""
 
 
