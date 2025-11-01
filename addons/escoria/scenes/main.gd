@@ -75,7 +75,8 @@ func set_scene(p_scene: Node) -> void:
 
 	current_scene = p_scene
 	
-	last_scene_global_id = previous_scene.global_id
+	if (previous_scene != null):
+		last_scene_global_id = previous_scene.global_id
 	current_scene.global_id = p_scene.global_id
 
 

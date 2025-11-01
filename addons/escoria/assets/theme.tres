@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=2]
 
-[ext_resource type="DynamicFont" path="res://addons/escoria/assets/fonts/caslonantique.tres" id="1"]
+[ext_resource type="DynamicFont" uid="uid://bhu74c1desslf" path="res://addons/escoria/assets/fonts/caslonantique.tres" id="1"]
 
 [resource]
 default_font = ExtResource( 1 )

@@ -13,7 +13,6 @@ const autoloads = {
 func _enter_tree() -> void:
 	for key in autoloads.keys():
 		add_autoload_singleton(key, autoloads[key])
-		_enable_plugin()
 
 # Setup Escoria
 func _enable_plugin() -> void:	
@@ -25,6 +24,10 @@ func _enable_plugin() -> void:
 	set_escoria_platform_settings()
 	set_escoria_dialog_manager_settings()
 	
+	call_deferred("_show_info_popup")
+	
+	
+func _show_info_popup():	
 	popup_info = AcceptDialog.new()
 	popup_info.dialog_text = """You enabled escoria plugin.
 
@@ -33,7 +36,7 @@ func _enable_plugin() -> void:
 	"""
 	
 	popup_info.connect("confirmed", self._on_warning_popup_confirmed)
-	get_editor_interface().get_editor_viewport_2d().add_child(popup_info)
+	add_child(popup_info)
 	popup_info.popup_centered()
 
 # Pop up to vanish
@@ -71,7 +74,7 @@ func set_escoria_main_settings():
 		})
 
 	if !ProjectSettings.has_setting(ESCProjectSettingsManager.SAVEGAMES_PATH):
-		ProjectSettings.set_setting(ESCProjectSettingsManager.SAVEGAMES_PATH, "user://saves/")
+		ProjectSettings.set_setting(ESCProjectSettingsManager.SAVEGAMES_PATH, "res://saves/")
 		ProjectSettings.add_property_info({
 			"name": ESCProjectSettingsManager.SAVEGAMES_PATH,
 			"type": TYPE_STRING,
@@ -79,7 +82,7 @@ func set_escoria_main_settings():
 		})
 
 	if !ProjectSettings.has_setting(ESCProjectSettingsManager.SETTINGS_PATH):
-		ProjectSettings.set_setting(ESCProjectSettingsManager.SETTINGS_PATH, "user://")
+		ProjectSettings.set_setting(ESCProjectSettingsManager.SETTINGS_PATH, "res://")
 		ProjectSettings.add_property_info({
 			"name": ESCProjectSettingsManager.SETTINGS_PATH,
 			"type": TYPE_STRING,
@@ -160,9 +163,9 @@ func set_escoria_debug_settings():
 			"hint_string": "ERROR,WARNING,INFO,DEBUG",
 		})
 
-	# Path where log files will be saved. Defaults to user:// (Godot user data folder)
+	# Path where log files will be saved. Defaults to res:// (Godot res data folder)
 	if !ProjectSettings.has_setting(ESCProjectSettingsManager.LOG_FILE_PATH):
-		ProjectSettings.set_setting(ESCProjectSettingsManager.LOG_FILE_PATH, "user://")
+		ProjectSettings.set_setting(ESCProjectSettingsManager.LOG_FILE_PATH, "res://")
 		ProjectSettings.add_property_info({
 			"name": ESCProjectSettingsManager.LOG_FILE_PATH,
 			"type": TYPE_STRING,

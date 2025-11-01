@@ -46,14 +46,14 @@ search_in_file_extensions=PackedStringArray("gd", "shader", "esc")
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/escoria/plugin.cfg")
 
 [escoria]
 
 main/game_start_script="res://game/start_game.esc"
 main/command_directories=["res://addons/escoria/core-scripts/esc/commands/"]
 main/savegames_path="res://saves/"
-main/settings_path="user://"
+main/settings_path="res://"
 main/text_lang="es"
 main/voice_lang="es"
 main/game_version="1.0"

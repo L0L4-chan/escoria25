@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ESCSaveSettings" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/escoria/core-scripts/esc/esc_savesettings.gd" id="1_at5fc"]
+
+[resource]
+script = ExtResource("1_at5fc")
+escoria_version = "1.0.0"
+text_lang = "es"
+voice_lang = "es"
+speech_enabled = true
+master_volume = 0.115
+music_volume = 0.111
+sfx_volume = 0.119
+speech_volume = 0.157
+fullscreen = true
+custom_settings = {
+"a_custom_setting": 100
+}

@@ -83,8 +83,8 @@ func _exit_tree():
 
 # Ready function
 func _ready():
-	#escoria.settings_manager.apply_settings()
-	connect("crash_popup_confirmed", escoria.quit, CONNECT_ONE_SHOT)
+	escoria.settings_manager.apply_settings()
+	#connect("crash_popup_confirmed", escoria.quit, CONNECT_ONE_SHOT)
 
 
 # Handle debugging visualizations
