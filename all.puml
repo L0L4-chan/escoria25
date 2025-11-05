@@ -1,0 +1,2725 @@
+@startuml
+skinparam classAttributeIconSize 0
+class AcceptInputCommand {
+  +mode
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class AnimBlockCommand {
+  +anim_id
+  +animation_finished
+  +animator
+  +obj
+  +reverse
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class AnimCommand {
+  +anim_id
+  +animator
+  +obj
+  +reverse
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Avatar {
+  +_current_line
+  +_fast_text_time_per_character
+  +_is_speeding_up
+  +_reading_speed_in_wpm
+  +_text_time_per_character
+  +_word_regex
+  +avatar
+  +time_show_full_text
+  +time_to_disappear
+  +tween
+  --
+  +_calculate_time_to_disappear()
+  +_get_number_of_words()
+  +_on_dialog_finished()
+  +_on_dialog_line_typed()
+  +_on_paused()
+  +_on_resumed()
+  +_on_tree_exited()
+  +_ready()
+  +finish()
+  +say()
+  +set_current_character()
+  +speedup()
+  +voice_audio_finished()
+}
+class BlockSayCommand {
+  +_init()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraPushBlockCommand {
+  +_camera_tween
+  +camera
+  +target
+  +target_pos
+  --
+  +_get_target_pos()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraPushCommand {
+  +camera
+  +target
+  +target_pos
+  --
+  +_get_target_pos()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetLimitsCommand {
+  +camera
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetPosBlockCommand {
+  +_camera_tween
+  +camera
+  +new_pos
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetPosCommand {
+  +camera
+  +new_pos
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetTargetBlockCommand {
+  +_camera_tween
+  +camera
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetTargetCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetZoomBlockCommand {
+  +_camera_tween
+  +camera
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetZoomCommand {
+  +configure()
+  +interrupt()
+  +run()
+}
+class CameraSetZoomHeightBlockCommand {
+  +_camera_tween
+  +camera
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraSetZoomHeightCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraShiftBlockCommand {
+  +_camera_tween
+  +camera
+  +new_pos
+  +shift_by
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CameraShiftCommand {
+  +camera
+  +new_pos
+  +shift_by
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class ChangeSceneCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class CustomCommand {
+  +object
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class DecGlobalCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Dialog_choices {
+  +_dialog
+  +_dialog_chooser_ui
+  +_dialog_player
+  +_ready_to_choose
+  +_type
+  +option
+  --
+  +enter()
+  +initialize()
+  +update()
+}
+class Dialog_finish {
+  +_dialog_player
+  --
+  +enter()
+  +initialize()
+  +update()
+}
+class Dialog_idle {
+  +enter()
+}
+class Dialog_interrupt {
+  +_dialog_manager
+  --
+  +_on_say_finished()
+  +enter()
+  +initialize()
+}
+class Dialog_say {
+  +_character
+  +_dialog_manager
+  +_dir
+  +_keytext_regex
+  +_ready_to_say
+  +_speech_resource
+  +_stop_talking_animation_on_option
+  +_text
+  +_type
+  +_voice_file
+  +file_name
+  +key
+  +left_click_action
+  +matches
+  +translated_text
+  --
+  +_get_voice_file()
+  +_handle_left_click_action()
+  +_init()
+  +_on_audio_finished()
+  +_on_say_visible()
+  +enter()
+  +handle_input()
+  +initialize()
+  +update()
+}
+class Dialog_say_fast {
+  +_dialog_manager
+  --
+  +_on_say_visible()
+  +enter()
+  +initialize()
+}
+class Dialog_say_finish {
+  +_dialog_manager
+  --
+  +_on_say_visible()
+  +enter()
+  +initialize()
+}
+class Dialog_visible {
+  +_dialog_manager
+  --
+  +_on_say_finished()
+  +enter()
+  +handle_input()
+  +initialize()
+}
+class ESCActionManager {
+  +action_state
+  +candidate
+  +clicked_position
+  +closest_point
+  +combine_with_event
+  +context
+  +current_action
+  +current_target
+  +current_tool
+  +destination_position
+  +dist
+  +do_combine
+  +dont_interact
+  +errors
+  +event_flags
+  +event_returned
+  +event_to_queue
+  +event_to_return
+  +final_destination
+  +interact_position
+  +item
+  +local_destination
+  +local_start
+  +min_dist
+  +moving_obj
+  +nav_poly
+  +nav_region
+  +need_combine
+  +obj
+  +object_id
+  +object_is_actionable
+  +outline
+  +outline_index
+  +player_global_pos
+  +s1
+  +s2
+  +target
+  +target_event
+  +target_position
+  +tool_just_set
+  +trigger_id
+  +trigger_in_verb
+  +trigger_out_verb
+  +walk_context
+  +walk_fast
+  +walkable_area
+  --
+  +_check_item_needs_combine()
+  +_get_event_to_queue()
+  +_get_valid_destination()
+  +_is_object_actionable()
+  +_run_event()
+  +_set_tool_and_action()
+  +_walk_towards_object()
+  +clear_current_action()
+  +clear_current_tool()
+  +do()
+  +is_object_actionable()
+  +perform_inputevent_on_object()
+  +perform_walk()
+  +set_action_input_state()
+  +set_current_action()
+}
+class ESCAnimationName {
+}
+class ESCAnimationPlayer {
+  +_animated_sprite
+  +_animation_player
+  +_current_animation
+  +_is_animation_player
+  +_player_node
+  --
+  +_init()
+  +_on_animation_finished()
+  +_on_animation_finished_animated_sprite()
+  +_ready()
+  +get_animation()
+  +get_animations()
+  +get_length()
+  +has_animation()
+  +is_playing()
+  +is_valid()
+  +play()
+  +play_backwards()
+  +seek_end()
+  +stop()
+}
+class ESCAnimationResource {
+  +founds_array
+  --
+  +get_direction_id_from_animation_name()
+  +set_dir_angles()
+  +set_directions()
+  +set_idles()
+  +set_speaks()
+}
+class ESCBackground {
+  +_size
+  +area
+  +area_rect2
+  +is_default_state
+  +p
+  +pos
+  +shape
+  +sid
+  +transform
+  --
+  +_enter_tree()
+  +_ready()
+  +_unhandled_input()
+  +get_full_area_rect2()
+}
+class ESCBaseCommand {
+  +command_name_regex
+  +file
+  +path
+  --
+  +_init()
+  +configure()
+  +get_command_name()
+  +interrupt()
+  +run()
+  +validate()
+}
+class ESCCamera {
+  +_follow_target
+  +_target
+  +_tween
+  +_zoom_target
+  +cur_camera_pos
+  +limits_to_test
+  +new_pos
+  +push_target
+  +ret_position
+  +screen_half_size
+  +target_pos
+  +variant
+  +viewport_rect
+  --
+  +_convert_current_global_pos_for_disabled_drag_margin()
+  +_convert_pos_for_disabled_drag_margin()
+  +_process()
+  +_ready()
+  +_resolve_target_and_zoom()
+  +_target_reached()
+  +check_point_is_inside_viewport_limits()
+  +clamp_to_viewport_limits()
+  +get_camera_limit_rect()
+  +get_current_valid_viewport_values_x()
+  +get_current_valid_viewport_values_y()
+  +get_tween()
+  +push()
+  +register()
+  +set_camera_zoom()
+  +set_drag_margin_enabled()
+  +set_limits()
+  +set_target()
+  +shift()
+}
+class ESCCameraBaseCommand {
+  +camera_limit
+  +message
+  --
+  +generate_viewport_warning()
+}
+class ESCCameraLimits {
+  +limit_bottom
+  +limit_left
+  +limit_right
+  +limit_top
+  --
+  +_init()
+}
+class ESCCommand {
+  +argument_descriptor
+  +command
+  +commandCalledAsString
+  +command_object
+  +command_path
+  +command_regex
+  +conditions
+  +export_dict
+  +name
+  +parameter_values
+  +parameters
+  +parsed_parameters
+  +prepared_arguments
+  +quote_open
+  +rc
+  --
+  +_init()
+  +_to_string()
+  +command_exists()
+  +exported()
+  +interrupt()
+  +is_valid()
+  +run()
+}
+class ESCCommandArgumentDescriptor {
+  +allowed_types
+  +complete_arguments
+  +correct
+  +defaults
+  +has_varargs
+  +leading_non_nulls_count
+  +max_args
+  +min_args
+  +required_args_count
+  +strip
+  +strip_quotes
+  +types
+  +types_index
+  +varargs
+  +verb
+  --
+  +_count_leading_non_null_values()
+  +_init()
+  +_is_type()
+  +prepare_arguments()
+  +validate()
+}
+class ESCCommandRegistry {
+  +registry
+  --
+  +get_command()
+  +load_command()
+}
+class ESCCompiler {
+  +_command_container
+  +_command_regex
+  +_comment_regex
+  +_current_event
+  +_current_indent
+  +_dialog_end_regex
+  +_dialog_option_regex
+  +_dialog_regex
+  +_dialogs_option_stack
+  +_dialogs_stack
+  +_empty_regex
+  +_event_regex
+  +_globals_regex
+  +_group_regex
+  +_groups_stack
+  +_indent_regex
+  +command
+  +dialog
+  +dialog_lines
+  +dialog_option
+  +dialog_option_lines
+  +end_line
+  +event
+  +event_lines
+  +events
+  +file
+  +group
+  +group_lines
+  +indent
+  +line
+  +lines
+  +next_line
+  +next_line_indent
+  +returned
+  +script
+  --
+  +_compile()
+  +_init()
+  +compile()
+  +load_esc_file()
+}
+class ESCCondition {
+  +comparison
+  +comparison_regex
+  +comparison_value
+  +flag
+  +global_name
+  +inventory
+  +negated
+  +return_value
+  --
+  +_init()
+  +run()
+}
+class ESCDialog {
+  +avatar
+  +dialog_regex
+  +option
+  +options
+  +rc
+  +timeout
+  +timeout_option
+  --
+  +is_valid()
+  +load_string()
+  +run()
+}
+class ESCDialogLocation {
+  +is_class()
+}
+class ESCDialogManager {
+  +choose()
+  +disable_preserve_dialog_box()
+  +enable_preserve_dialog_box()
+  +finish()
+  +has_chooser_type()
+  +has_type()
+  +interrupt()
+  +say()
+  +speedup()
+  +voice_audio_finished()
+}
+class ESCDialogOption {
+  +_trans_key
+  +conditions
+  +key
+  +option
+  +option_regex
+  +splitted_text
+  +translated_text
+  --
+  +get_translated_option()
+  +is_valid()
+  +load_string()
+}
+class ESCDialogOptionsChooser {
+  +dialog
+  --
+  +hide_chooser()
+  +set_dialog()
+  +show_chooser()
+}
+class ESCDialogPlayer {
+  +_block_say_enabled
+  +_choose_dialog_manager
+  +_manager
+  +_say_dialog_manager
+  +dialog_manager
+  --
+  +_determine_choose_dialog_manager()
+  +_determine_dialog_manager()
+  +_determine_say_dialog_manager()
+  +_ready()
+  +_update_dialog_manager()
+  +disable_preserve_dialog_box()
+  +enable_preserve_dialog_box()
+  +interrupt()
+  +say()
+  +start_dialog_choices()
+}
+class ESCDirectionAngle {
+}
+class ESCEvent {
+  +_flags
+  +event_regex
+  +exported_dict
+  +flags
+  +name
+  +original_name
+  --
+  +_init()
+  +exported()
+  +run()
+}
+class ESCEventManager {
+  +_change_scene
+  +_changing_scene
+  +_channels_state
+  +_running_events
+  +_yielding
+  +channel_yielding
+  +ev
+  +event
+  +event_flags
+  +events_queue
+  +events_queue_dict
+  +events_queue_for_key
+  +events_to_clear
+  +found_exception
+  +id
+  +last_event
+  +message
+  +rc
+  +running_event
+  +sched_events_array
+  +scheduled_events
+  +script
+  +statement_ids_arr
+  +statement_params
+  +warning_string
+  --
+  +_generate_statement_error_warning()
+  +_get_current_statement_ids_in_running_event()
+  +_get_last_event_queued()
+  +_init()
+  +_is_event_running()
+  +_on_event_finished()
+  +_process()
+  +_ready()
+  +_set_current_statements_in_running_event()
+  +clear_event_queue()
+  +get_running_event()
+  +interrupt()
+  +is_channel_free()
+  +queue_background_event()
+  +queue_event()
+  +queue_event_from_esc()
+  +save_game()
+  +schedule_event()
+  +set_changing_scene()
+  +set_running_event_from_savegame()
+  +set_scheduled_events_from_savegame()
+}
+class ESCExecution {
+}
+class ESCExit {
+  +_change_scene
+  +_play_snd
+  +exit_scene_event
+  +exit_scene_event_script
+  --
+  +_enter_tree()
+  +_ready()
+  +_register_event()
+}
+class ESCGame {
+  +crash_popup
+  +files_to_send
+  +hover_stack_displayer
+  +mouse_limits
+  +moving_obj
+  +room_ready_for_inputs
+  +target
+  +tooltip_node
+  +walk_fast
+  --
+  +_draw()
+  +_enter_tree()
+  +_exit_tree()
+  +_input()
+  +_on_action_finished()
+  +_on_event_done()
+  +_on_room_ready()
+  +_ready()
+  +_set_editor_debug_mode()
+  +apply_custom_settings()
+  +clear_tooltip()
+  +close_inventory()
+  +do_walk()
+  +element_focused()
+  +element_unfocused()
+  +escoria_hide_ui()
+  +escoria_show_ui()
+  +get_custom_data()
+  +hide_main_menu()
+  +hide_ui()
+  +inventory_item_focused()
+  +inventory_item_unfocused()
+  +left_click_on_bg()
+  +left_click_on_inventory_item()
+  +left_click_on_item()
+  +left_double_click_on_bg()
+  +left_double_click_on_inventory_item()
+  +left_double_click_on_item()
+  +mousewheel_action()
+  +open_inventory()
+  +pause_game()
+  +right_click_on_bg()
+  +right_click_on_inventory_item()
+  +right_click_on_item()
+  +show_crash_popup()
+  +show_main_menu()
+  +show_ui()
+  +unpause_game()
+}
+class ESCGame9Verbs {
+  +dialog
+  +inventory_ui
+  +object
+  +room_select
+  +room_selector_parent
+  +target_obj
+  +tooltip
+  +verbs_menu
+  --
+  +_enter_tree()
+  +_on_MenuButton_pressed()
+  +_on_action_finished()
+  +_on_event_done()
+  +_ready()
+  +apply_custom_settings()
+  +close_inventory()
+  +element_focused()
+  +element_unfocused()
+  +get_custom_data()
+  +hide_main_menu()
+  +hide_ui()
+  +inventory_item_focused()
+  +inventory_item_unfocused()
+  +left_click_on_bg()
+  +left_click_on_inventory_item()
+  +left_click_on_item()
+  +left_double_click_on_bg()
+  +left_double_click_on_inventory_item()
+  +left_double_click_on_item()
+  +mousewheel_action()
+  +open_inventory()
+  +pause_game()
+  +right_click_on_bg()
+  +right_click_on_inventory_item()
+  +right_click_on_item()
+  +show_dialog_layer()
+  +show_main_menu()
+  +show_ui()
+  +unpause_game()
+}
+class ESCGlobalsManager {
+  +_reserved_globals
+  +globals_regex
+  +globresult
+  +old_value
+  +ret
+  --
+  +_init()
+  +clear()
+  +filter()
+  +get_global()
+  +has()
+  +register_reserved_global()
+  +replace_globals()
+  +save_game()
+  +set_global()
+  +set_global_wildcard()
+}
+class ESCGroup {
+  +conditions
+  +group_regex
+  --
+  +_init()
+}
+class ESCInputsManager {
+  +_hovered_element
+  +actual_item
+  +custom_input_handler
+  +hotspot_focused
+  +hover_stack
+  +input_mode
+  +new_item
+  +next_item
+  +object
+  +ret
+  --
+  +_init()
+  +_on_double_left_click_on_bg()
+  +_on_event_finished()
+  +_on_hover_stack_changed()
+  +_on_left_click_on_bg()
+  +_on_mouse_double_left_click_inventory_item()
+  +_on_mouse_entered_inventory_item()
+  +_on_mouse_entered_item()
+  +_on_mouse_exited_inventory_item()
+  +_on_mouse_exited_item()
+  +_on_mouse_left_click_inventory_item()
+  +_on_mouse_left_clicked_item()
+  +_on_mouse_left_double_clicked_item()
+  +_on_mouse_right_click_inventory_item()
+  +_on_mouse_right_clicked_item()
+  +_on_mousewheel_action()
+  +_on_pause_menu_requested()
+  +_on_right_click_on_bg()
+  +_ready()
+  +_sort()
+  +add_item()
+  +add_items()
+  +clean()
+  +clear()
+  +empty()
+  +erase_item()
+  +get_all()
+  +get_top_item()
+  +has()
+  +on_item_non_interactive()
+  +pop_top_item()
+  +register_background()
+  +register_core()
+  +register_custom_input_handler()
+  +register_inventory_item()
+  +set_hovered_node()
+  +try_custom_input_handler()
+  +unset_hovered_node()
+}
+class ESCInteractionLocation {
+  +is_class()
+}
+class ESCInventory {
+  +inventory_file
+  +inventory_item
+  +inventory_item_button
+  +item
+  +item_inventory
+  +item_inventory_button
+  +items_ids_in_inventory
+  +items_in_inventory_keys
+  --
+  +_on_escoria_global_changed()
+  +_ready()
+  +add_new_item_by_id()
+  +clear()
+  +remove_item_by_id()
+}
+class ESCInventoryButton {
+  +expand
+  +global_id
+  --
+  +_init()
+  +_on_inventory_item_gui_input()
+  +_on_inventory_item_mouse_enter()
+  +_on_inventory_item_mouse_exit()
+  +_process()
+  +_ready()
+}
+class ESCInventoryContainer {
+  +button
+  +inventory_button
+  --
+  +add_item()
+  +get_inventory_button()
+  +is_empty()
+  +remove_item()
+}
+class ESCInventoryItem {
+  +global_id
+  +texture
+  --
+  +_init()
+}
+class ESCInventoryManager {
+  +filtered
+  +items
+  --
+  +add_item()
+  +inventory_has()
+  +items_in_inventory()
+  +remove_item()
+  +save_game()
+}
+class ESCItem {
+  +_animation_player
+  +_force_registration
+  +_movable
+  +_scene_warnings
+  +_sprite_node
+  +animation_direction
+  +animation_player
+  +animation_sprite
+  +animations
+  +colliders
+  +colliding
+  +colliding_nodes
+  +collision
+  +esclocation_count
+  +esclocation_position
+  +event
+  +has_empty_entry
+  +interact_count
+  +interact_position
+  +num_dir_angles
+  +p
+  +physics2d_dss
+  +player_node_path
+  +pos_2d_count
+  +pos_2d_position
+  +properties
+  +query
+  +regex
+  +result
+  +script
+  +terrain
+  +where
+  --
+  +_detect_children()
+  +_get_configuration_warning()
+  +_get_identifier_as_key_value()
+  +_get_inventory_texture()
+  +_get_property_list()
+  +_is_in_shape()
+  +_on_input_event()
+  +_on_mouse_exited()
+  +_ready()
+  +_set_animation_player_node()
+  +_unhandled_input()
+  +_update_terrain()
+  +_validate_animations_property_all_not_null()
+  +check_talk_possible()
+  +connect_trigger_events()
+  +disconnect_trigger_events()
+  +element_entered()
+  +element_exited()
+  +get_animation_player()
+  +get_camera_node()
+  +get_custom_data()
+  +get_directions_quantity()
+  +get_interact_position()
+  +get_sprite()
+  +has_moved()
+  +is_moving()
+  +mouse_entered()
+  +mouse_exited()
+  +set_angle()
+  +set_animations()
+  +set_custom_data()
+  +set_direction()
+  +set_speed()
+  +start_talking()
+  +stop_talking()
+  +stop_walking_now()
+  +teleport()
+  +teleport_to()
+  +turn_to()
+  +update_idle()
+  +validate_animations()
+  +validate_exported_parameters()
+  +walk_to()
+}
+class ESCLocation {
+  +_multiple_start_locations_exist
+  --
+  +_exit_tree()
+  +_get_configuration_warning()
+  +_ready()
+  +is_class()
+  +set_is_start_location()
+  +set_multiple_locations_exist()
+}
+class ESCLoggerBase {
+  +_level_map
+  +_log_level
+  +context
+  +dont_assert
+  +info
+  --
+  +_formatted_date()
+  +_init()
+  +debug()
+  +debug_message()
+  +error()
+  +error_message_f()
+  +formatted_message()
+  +get_log_level()
+  +info()
+  +info_message()
+  +trace()
+  +trace_message()
+  +warn()
+  +warn_message()
+}
+class ESCLoggerFile {
+  +context
+  +date
+  +frame_number
+  +log_file
+  +log_file_path
+  --
+  +_init()
+  +_log_line_to_file()
+  +_log_stack_trace_to_file()
+  +_log_to_file()
+  +_log_to_file_message()
+  +close_logs()
+  +debug()
+  +debug_message()
+  +error()
+  +info()
+  +info_message()
+  +log_error_message()
+  +trace()
+  +trace_message()
+  +warn()
+  +warn_message()
+}
+class ESCLoggerVerbose {
+  +context
+  --
+  +_init()
+  +debug()
+}
+class ESCMain {
+  +escoria_node
+  --
+  +_ready()
+}
+class ESCMigration {
+  +_savegame
+  --
+  +get_savegame()
+  +migrate()
+  +set_savegame()
+}
+class ESCMigrationManager {
+  +a_info
+  +b_info
+  +dir
+  +file_name
+  +from_info
+  +migration_script
+  +regex_result
+  +to_info
+  +version
+  +version_info
+  +version_regex
+  +versions
+  +wrong_version
+  --
+  +_compare_version()
+  +_find_versions()
+  +_init()
+  +_version_between()
+  +migrate()
+}
+class ESCMovable {
+  +_orig_speed
+  +a
+  +angle
+  +animation_player
+  +animation_to_play
+  +color
+  +current_animation
+  +current_dir
+  +deg
+  +dir
+  +end_angle
+  +factor
+  +i
+  +internal
+  +is_mirrored
+  +last_angle
+  +last_dir
+  +last_scale
+  +moved
+  +movement_speed
+  +new_pos
+  +next
+  +old_pos
+  +orientation
+  +path_ofs
+  +pos
+  +scal
+  +sprite
+  +start_angle
+  +target_dir
+  +walk_context
+  +walk_destination
+  +walk_path
+  +way_to_turn
+  --
+  +_calculate_movement()
+  +_get_angle()
+  +_get_dir_deg()
+  +_is_angle_in_interval()
+  +_perform_walk_orientation()
+  +_process()
+  +_ready()
+  +get_shortest_way_to_dir()
+  +set_angle()
+  +set_direction()
+  +teleport()
+  +teleport_to()
+  +turn_to()
+  +update_terrain()
+  +walk_stop()
+  +walk_to()
+}
+class ESCMusicPlayer {
+  +previous
+  +resource
+  +state
+  +volume
+  --
+  +_ready()
+  +get_playback_position()
+  +set_state()
+  +set_value()
+}
+class ESCObject {
+  +active
+  +actual_animator
+  +animation_node
+  +events
+  +global_id
+  +interactive
+  +node
+  +save_data
+  +state
+  --
+  +_get_interactive()
+  +_init()
+  +_set_active()
+  +_set_interactive()
+  +get_save_data()
+  +set_state()
+}
+class ESCObjectManager {
+  +current_room_key
+  +obj
+  +obj_json_to_save
+  +objects
+  +reserved_objects
+  +reserved_objects_container
+  +room_container
+  +room_key
+  +room_objects
+  +room_objects_dict
+  +room_terrains
+  +script
+  +terrain_escobj
+  +terrains
+  --
+  +_compare_container_to_key()
+  +_erase_room()
+  +_get_room_objects_objects()
+  +_get_room_terrain_navpolys()
+  +_init()
+  +_is_current_room()
+  +_object_exists_in_room()
+  +_object_state_in_room_is_default()
+  +_room_exists()
+  +get_object()
+  +get_start_location()
+  +has()
+  +register_object()
+  +register_terrain()
+  +save_game()
+  +set_current_room()
+  +unregister_object()
+  +unregister_object_by_global_id()
+  +update_state()
+}
+class ESCPlayer {
+  +_init()
+  +_ready()
+}
+class ESCProjectSettingsManager {
+}
+class ESCResourceCache {
+  +path
+  +pending
+  +pos
+  +queue
+  +res
+  +ret
+  --
+  +_process()
+  +_wait_for_resource()
+  +cancel_resource()
+  +clear()
+  +get_progress()
+  +get_resource()
+  +is_ready()
+  +print_progress()
+  +print_queue_progress()
+  +queue_resource()
+  +res_loaded()
+  +start()
+}
+class ESCResourceDescriptor {
+  +permanent
+  +res
+  --
+  +_init()
+}
+class ESCRoom {
+  +camera_limits_colors
+  +compiled_script
+  +default_font
+  +enabled_automatic_transitions
+  +esc_bg
+  +esc_locations
+  +found_escbackground
+  +game
+  +is_run_directly
+  +num_start_locations
+  +player
+  +player_camera
+  +temp_control
+  --
+  +_connect_location_nodes()
+  +_connect_location_nodes_in_tree()
+  +_draw()
+  +_enter_tree()
+  +_find_esc_locations()
+  +_ready()
+  +_validate_start_locations()
+  +set_camera_limits()
+  +set_editor_debug_mode()
+}
+class ESCRoomContainer {
+  +is_reserved
+  +room_global_id
+  +room_instance_id
+}
+class ESCRoomManager {
+  +_accept_input
+  +_transition
+  +_wait
+  +animations
+  +command_strings
+  +game_parent
+  +rc
+  +ready_event_added
+  +res_room
+  +room_scene
+  +script_transition_in
+  +script_transition_out
+  +setup_event_added
+  +yielded
+  --
+  +_init()
+  +_perform_script_events()
+  +_run_script_event()
+  +change_scene()
+  +init_room()
+  +register_reserved_globals()
+}
+class ESCRoomObjects {
+  +objects
+}
+class ESCRoomObjectsKey {
+  +room_global_id
+  +room_instance_id
+  --
+  +is_valid()
+}
+class ESCRoomTerrains {
+  +terrains
+}
+class ESCSaveGame {
+}
+class ESCSaveManager {
+  +_add_inventory
+  +_camera_set_target
+  +_change_scene
+  +_enable_terrain
+  +_hide_menu
+  +_play_snd
+  +_sched_event
+  +_set_active
+  +_set_active_if_exists
+  +_set_angle
+  +_set_direction
+  +_set_global
+  +_set_interactive
+  +_set_item_custom_data
+  +_set_state
+  +_stop_snd
+  +_teleport_pos
+  +_transition
+  +camera_target_to_follow
+  +crash_savegame_filename
+  +datetime
+  +datetime_string
+  +directory
+  +dirsave
+  +error
+  +escoria_version
+  +global_value
+  +is_loading_game
+  +load_event
+  +load_statements
+  +matches
+  +migration_manager
+  +nextfile
+  +obj_data
+  +plugin_config
+  +regex
+  +room_objects
+  +save_enabled
+  +save_file_path
+  +save_folder
+  +save_game
+  +save_game_data
+  +save_game_res
+  +save_path
+  +saves
+  +settings_folder
+  --
+  +_do_save_game()
+  +_init()
+  +get_saves_list()
+  +load_game()
+  +save_game()
+  +save_game_crash()
+  +save_game_exists()
+}
+class ESCSaveSettings {
+}
+class ESCScheduledEvent {
+  +event
+  +exported_dict
+  +object
+  +timeout
+  --
+  +_init()
+  +exported()
+  +run()
+}
+class ESCScript {
+  +events
+}
+class ESCSettingsManager {
+  +custom_settings
+  +directory
+  +error
+  +plugin_config
+  +save_path
+  +save_settings_path
+  +settings
+  +settings_dict
+  +settings_folder
+  +want_fullscreen
+  --
+  +_init()
+  +apply_settings()
+  +get_settings()
+  +get_settings_dict()
+  +load_settings()
+  +load_settings_from_dict()
+  +save_settings()
+  +save_settings_resource_to_project_settings()
+}
+class ESCSoundPlayer {
+  +previous
+  +resource
+  +state
+  +volume
+  --
+  +_on_sound_finished()
+  +_ready()
+  +get_playback_position()
+  +set_state()
+  +set_value()
+}
+class ESCSpeechPlayer {
+  +previous
+  +resource
+  +volume
+  --
+  +_on_AudioStreamPlayer_finished()
+  +_ready()
+  +get_playback_position()
+  +pause()
+  +resume()
+  +set_state()
+  +set_value()
+}
+class ESCStatement {
+  +_is_interrupted
+  +bypass_conditions
+  +current_statement
+  +export_dict
+  +final_rc
+  +from_statement_id
+  +is_completed
+  +rc
+  +source
+  +statement_id
+  +statements
+  --
+  +exported()
+  +interrupt()
+  +is_valid()
+  +reset_interrupt()
+  +run()
+}
+class ESCTerrain {
+  +_lightmap_data
+  +_texture
+  +_texture_in_update
+  +c
+  +current_active_navigation_instance
+  +dst
+  +factor
+  +final_color
+  +img
+  +local_pos
+  +nav_map
+  +navigation_enabled_found
+  +navpolys
+  +need_init
+  +path
+  +pixel_color
+  +scale_image
+  +scale_vect
+  +src
+  +tex_h
+  +tex_w
+  +tex_x
+  +tex_y
+  +walkable_size
+  +x
+  +y
+  --
+  +_check_multiple_enabled_navpolys()
+  +_do_update_texture()
+  +_draw()
+  +_get_color()
+  +_ready()
+  +_set_bm_scale()
+  +_set_debug_mode()
+  +_set_lightmap()
+  +_set_scales()
+  +_update_texture()
+  +get_children_navpolys()
+  +get_light()
+  +get_scale_range()
+  +get_simple_path()
+  +get_terrain()
+}
+class ESCTooltip {
+  +_room_is_ready
+  +center_offset_x
+  +color
+  +current_action
+  +current_prep
+  +current_target
+  +current_target2
+  +debug_texturerect_node
+  +offset_y
+  +waiting_for_target2
+  --
+  +_offset()
+  +_on_action_selected()
+  +_on_room_ready()
+  +_ready()
+  +clear()
+  +set_color()
+  +set_debug_mode()
+  +set_target()
+  +set_target2()
+  +tooltip_distance_to_edge_bottom()
+  +tooltip_distance_to_edge_left()
+  +tooltip_distance_to_edge_right()
+  +tooltip_distance_to_edge_top()
+  +update_size()
+  +update_tooltip_text()
+}
+class ESCTransitionPlayer {
+  +_tween
+  +_was_canceled
+  +end
+  +material_path
+  +path
+  +start
+  +transition_id
+  --
+  +_on_tween_completed()
+  +_ready()
+  +get_transition()
+  +has_transition()
+  +reset_shader_cutoff()
+  +transition()
+}
+class ESCUtils {
+  +deg
+  +double_regex
+  +regex_bool
+  +regex_float
+  +regex_int
+  +tab_regex
+}
+class ESCWalkContext {
+  +dont_interact_on_arrival
+  +fast
+  +target_object
+  +target_position
+  --
+  +_init()
+}
+class EnableTerrainCommand {
+  +name
+  +new_active_navigation_instance
+  --
+  +configure()
+  +interrupt()
+  +run()
+}
+class EndBlockSayCommand {
+  +_init()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Esc_dialog_simple {
+  +_dialog_player
+  +_is_saying
+  +_preserved_type_player_type
+  +_should_preserve_dialog_box
+  +_type_player
+  +chooser
+  +option
+  +state_machine
+  --
+  +_init_type_player()
+  +_initialize_say_states()
+  +_on_say_finished()
+  +_on_say_visible()
+  +_ready()
+  +choose()
+  +disable_preserve_dialog_box()
+  +do_choose()
+  +do_say()
+  +enable_preserve_dialog_box()
+  +finish()
+  +has_chooser_type()
+  +has_type()
+  +interrupt()
+  +say()
+  +speedup()
+  +voice_audio_finished()
+}
+class Esc_dialog_simple_state_machine {
+  +_add_states_to_machine()
+  +_create_states()
+  +_init()
+}
+class Esc_prompt_popup {
+  +_print
+  +commands_history
+  +commands_history_current_id
+  +errors
+  +ret
+  +script
+  --
+  +_historize_command()
+  +_input()
+  +_on_command_text_entered()
+  +_on_error_message_f()
+  +_on_esc_prompt_popup_about_to_show()
+  +_ready()
+}
+class Escoria {
+  +action_default_script
+  +action_manager
+  +command_registry
+  +creating_new_game
+  +current_scene
+  +dialog_player
+  +esc_compiler
+  +event_manager
+  +game_scene
+  +globals_manager
+  +inputs_manager
+  +inventory
+  +inventory_manager
+  +is_direct_room_run
+  +is_quitting
+  +logger
+  +main
+  +main_scene
+  +object_manager
+  +player_camera
+  +rc
+  +resource_cache
+  +room_manager
+  +room_terrain
+  +save_manager
+  +scene_tree
+  +settings_manager
+  +start_script
+  --
+  +_handle_direct_scene_run()
+  +_init()
+  +_input()
+  +_notification()
+  +_on_game_finished_loading()
+  +_on_game_is_loading()
+  +_perform_plugins_checks()
+  +_ready()
+  +get_escoria()
+  +init()
+  +is_ready_for_inputs()
+  +new_game()
+  +quit()
+  +run_event_from_script()
+  +set_game_paused()
+}
+class Floating {
+  +_current_character
+  +_current_line
+  +_fast_text_time_per_character
+  +_is_speeding_up
+  +_reading_speed_in_wpm
+  +_text_time_per_character
+  +_word_regex
+  +dialog_location_count
+  +dialog_location_node
+  +screen_margin_x
+  +screen_margin_y
+  +script
+  +text_color
+  +text_color_html
+  +time_show_full_text
+  +time_to_disappear
+  +tween
+  --
+  +_account_for_margin_x()
+  +_account_for_margin_y()
+  +_calculate_time_to_disappear()
+  +_get_number_of_words()
+  +_on_dialog_finished()
+  +_on_dialog_line_typed()
+  +_on_paused()
+  +_on_resumed()
+  +_on_tree_exiting()
+  +_process()
+  +_ready()
+  +_stop_character_talking()
+  +finish()
+  +say()
+  +speedup()
+  +voice_audio_finished()
+}
+class Game {
+  +_current_mouse_pos
+  +_is_gamepad_connected
+  +corrected_position
+  +delta_x
+  +delta_y
+  +direction
+  +input_handler
+  +item
+  +primary_event
+  +room_select
+  +room_selector_parent
+  +target_obj
+  +verb_event
+  +viewport
+  +x
+  +y
+  --
+  +_enter_tree()
+  +_exit_tree()
+  +_input()
+  +_on_MenuButton_pressed()
+  +_on_action_finished()
+  +_on_event_done()
+  +_on_gamepad_connected()
+  +_on_gamepad_disconnected()
+  +_on_joy_connection_changed()
+  +_process()
+  +_process_input()
+  +_ready()
+  +apply_custom_settings()
+  +close_inventory()
+  +element_focused()
+  +element_unfocused()
+  +get_custom_data()
+  +hide_main_menu()
+  +hide_ui()
+  +inventory_item_focused()
+  +inventory_item_unfocused()
+  +left_click_on_bg()
+  +left_click_on_inventory_item()
+  +left_click_on_item()
+  +left_double_click_on_bg()
+  +left_double_click_on_inventory_item()
+  +left_double_click_on_item()
+  +mousewheel_action()
+  +open_inventory()
+  +pause_game()
+  +right_click_on_bg()
+  +right_click_on_inventory_item()
+  +right_click_on_item()
+  +show_main_menu()
+  +show_ui()
+  +unpause_game()
+  +update_tooltip_following_mouse_position()
+}
+class HideMenuCommand {
+  +transition_id
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Hover_stack {
+  +l
+  --
+  +update()
+}
+class IncGlobalCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Input_map {
+  +action
+  +event
+  +scancode
+}
+class InventoryAddCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class InventoryRemoveCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Inventory_ui {
+  +button
+  +inventory_visible
+  +panel
+  +target_x
+  +tween
+  --
+  +_on_inventory_button_pressed()
+  +_ready()
+  +hide_inventory()
+  +show_inventory()
+}
+class Keyboard {
+  +input_handler
+  +inventory_ui
+  +menu
+  +pause
+  +room_select
+  +room_selector_parent
+  +target_obj
+  +tooltip
+  +verbs_menu
+  --
+  +_enter_tree()
+  +_exit_tree()
+  +_on_MenuButton_pressed()
+  +_on_action_finished()
+  +_on_event_done()
+  +_process_input()
+  +_ready()
+  +apply_custom_settings()
+  +close_inventory()
+  +element_focused()
+  +element_unfocused()
+  +get_custom_data()
+  +hide_main_menu()
+  +hide_ui()
+  +inventory_item_focused()
+  +inventory_item_unfocused()
+  +left_click_on_bg()
+  +left_click_on_inventory_item()
+  +left_click_on_item()
+  +left_double_click_on_bg()
+  +left_double_click_on_inventory_item()
+  +left_double_click_on_item()
+  +mousewheel_action()
+  +open_inventory()
+  +pause_game()
+  +right_click_on_bg()
+  +right_click_on_inventory_item()
+  +right_click_on_item()
+  +show_main_menu()
+  +show_ui()
+  +unpause_game()
+}
+class Load_game {
+  +datetime_string
+  +new_slot
+  +saves_array
+  +saves_list
+  --
+  +_on_back_pressed()
+  +_on_slot_pressed()
+  +_ready()
+  +refresh_savegames()
+}
+class Load_save_slot {
+  +set_slot_name_date()
+}
+class Main {
+  +area
+  +current_scene
+  +items_to_disable
+  +last_available_camera_limit
+  +last_scene_global_id
+  +limits
+  +previous_scene
+  +scene_camera_limits
+  +scene_transition
+  +wait_level
+  --
+  +_disable_collisions()
+  +_exit_tree()
+  +_is_same_scene()
+  +_on_wait_finished()
+  +_ready()
+  +activate_camera()
+  +check_game_scene_methods()
+  +clear_previous_scene()
+  +finish_current_scene_init()
+  +hide_current_scene()
+  +hide_ui()
+  +save_game()
+  +set_camera_limits()
+  +set_scene()
+  +set_scene_finish()
+  +show_current_scene()
+  +show_ui()
+}
+class Main_menu {
+  +_on_load_game_back_button_pressed()
+  +_on_load_game_pressed()
+  +_on_new_game_pressed()
+  +_on_options_back_button_pressed()
+  +_on_options_pressed()
+  +_on_quit_pressed()
+  +reset()
+}
+class Options {
+  +_flags_container
+  +_loaded_languages
+  +_options
+  +backup_settings
+  +button
+  +language_change
+  --
+  +_on_apply_pressed()
+  +_on_back_pressed()
+  +_on_fullscreen_toggled()
+  +_on_general_volume_changed()
+  +_on_language_input()
+  +_on_music_volume_changed()
+  +_on_sound_volume_changed()
+  +_on_speech_volume_value_changed()
+  +_ready()
+  +initialize_flags()
+  +initialize_options()
+  +refresh_ui_texts()
+  +show()
+}
+class Overwrite_confirm_popup {
+  +_on_no_pressed()
+  +_on_yes_pressed()
+  +_ready()
+}
+class Pause_menu {
+  +_on_continue_pressed()
+  +_on_load_game_back_button_pressed()
+  +_on_load_game_pressed()
+  +_on_options_back_button_pressed()
+  +_on_options_pressed()
+  +_on_quit_pressed()
+  +_on_save_game_back_button_pressed()
+  +_on_save_game_pressed()
+  +_ready()
+  +reset()
+  +set_save_enabled()
+}
+class PlaySndCommand {
+  +_snd_player
+  --
+  +configure()
+  +run()
+  +validate()
+}
+class Plugin {
+  +active_path
+  +managers
+  +popup_info
+  +script
+  +ui_path
+  +ui_type
+  --
+  +_disable_plugin()
+  +_enable_plugin()
+  +_enter_tree()
+  +_on_warning_popup_confirmed()
+  +_show_info_popup()
+  +get_active_dialog_manager_class()
+  +register_dialog_manager()
+  +set_active_dialog_manager()
+  +set_escoria_debug_settings()
+  +set_escoria_dialog_manager_settings()
+  +set_escoria_main_settings()
+  +set_escoria_platform_settings()
+  +set_escoria_sound_settings()
+  +set_escoria_ui_settings()
+}
+class PrintCommand {
+  +configure()
+  +interrupt()
+  +run()
+}
+class QueueEventCommand {
+  +esc_script
+  +node
+  --
+  +_get_scripted_node()
+  +_is_current_room()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class QueueResourceCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class RandGlobalCommand {
+  +rnd
+  --
+  +configure()
+  +interrupt()
+  +run()
+}
+class RepeatCommand {
+  +configure()
+  +interrupt()
+  +run()
+}
+class Room_select {
+  +_options_paths
+  +_selected_id
+  +dir
+  +file_name
+  +path
+  +rooms_folder
+  +rooms_list
+  +script
+  +tmp
+  --
+  +_on_button_pressed()
+  +_on_option_item_selected()
+  +_ready()
+}
+class SaveGameCommand {
+  +_init()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SaveGamesSorter {
+}
+class Save_game {
+  +_slot_pressed
+  +_slots
+  +datetime
+  +datetime_string
+  +new_slot
+  +saves_array
+  +saves_list
+  --
+  +_on_back_pressed()
+  +_on_overwrite_confirm_popup_confirm_yes()
+  +_on_save_name_popup_savegame_name_ok()
+  +_on_slot_pressed()
+  +_ready()
+  +refresh_savegames()
+}
+class Save_name_popup {
+  +_input()
+  +_on_cancel_pressed()
+  +_on_ok_pressed()
+}
+class SayCommand {
+  +dict
+  +globals_regex
+  +speaking_character_global_id
+  --
+  +_init()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SchedEventCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetActiveCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetActiveIfExistsCommand {
+  +configure()
+  +interrupt()
+  +run()
+}
+class SetAngleCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetAnimationsCommand {
+  +animations
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetDirectionCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetGlobalCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetGlobalsCommand {
+  +configure()
+  +interrupt()
+  +run()
+}
+class SetGuiVisibleCommand {
+  +configure()
+  +interrupt()
+  +run()
+}
+class SetInteractiveCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetItemCustomDataCommand {
+  +global_id
+  +item
+  --
+  +configure()
+  +interrupt()
+  +run()
+}
+class SetSpeedCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SetStateCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class ShowMenuCommand {
+  +transition_id
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Simple {
+  +_no_more_options
+  +_option_node
+  +_vbox
+  +option_chosen
+  --
+  +_on_Timer_timeout()
+  +_on_answer_selected()
+  +_option_chosen()
+  +_process()
+  +_ready()
+  +_remove_avatar()
+  +hide_chooser()
+  +show_chooser()
+}
+class SlideBlockCommand {
+  +tween
+  --
+  +interrupt()
+  +run()
+}
+class SlideCommand {
+  +_tweens
+  +duration
+  +tween
+  --
+  +_on_tween_completed()
+  +_slide_object()
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class SpawnCommand {
+  +obj
+  +res_scene
+  +scene
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class State {
+  +_on_animation_finished()
+  +enter()
+  +exit()
+  +handle_input()
+  +update()
+}
+class StateMachine {
+  +_active
+  +current_state
+  +current_state_name
+  +states_map
+  +states_stack
+  --
+  +_change_state()
+  +_input()
+  +_on_animation_finished()
+  +_physics_process()
+  +get_current_state_name()
+  +initialize()
+  +set_active()
+}
+class StopCommand {
+  +configure()
+  +interrupt()
+  +run()
+}
+class StopSndCommand {
+  +_snd_player
+  +_sound_players
+  +esc_obj
+  +previous_snd_state
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class TeleportCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class TeleportPosCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Tooltip_action_target {
+  +update_tooltip_text()
+}
+class Tooltip_target {
+  +update_tooltip_text()
+}
+class TransitionCommand {
+  +transition_id
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class TurnToCommand {
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class Verbs_menu {
+  +selected_action
+  --
+  +_on_action_selected()
+  +_ready()
+  +set_by_name()
+  +unselect_actions()
+}
+class Verbs_mouseicons {
+  +current_cursor_id
+  --
+  +_process()
+  +_ready()
+  +clear_tool_texture()
+  +iterate_actions_cursor()
+  +set_by_name()
+  +set_tool_texture()
+}
+class WaitCommand {
+  +timer
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class WalkBlockCommand {
+  +target_object_node
+  +walking_object_node
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class WalkCommand {
+  +target_object_node
+  +walking_object_node
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class WalkToPosBlockCommand {
+  +walking_object_node
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+class WalkToPosCommand {
+  +walking_object_node
+  --
+  +configure()
+  +interrupt()
+  +run()
+  +validate()
+}
+AcceptInputCommand --|> ESCBaseCommand
+AnimBlockCommand --|> ESCBaseCommand
+AnimCommand --|> ESCBaseCommand
+class Popup
+Avatar --|> Popup
+BlockSayCommand --|> ESCBaseCommand
+CameraPushBlockCommand --|> ESCCameraBaseCommand
+CameraPushCommand --|> ESCCameraBaseCommand
+CameraSetLimitsCommand --|> ESCCameraBaseCommand
+CameraSetPosBlockCommand --|> ESCCameraBaseCommand
+CameraSetPosCommand --|> ESCCameraBaseCommand
+CameraSetTargetBlockCommand --|> ESCCameraBaseCommand
+CameraSetTargetCommand --|> ESCCameraBaseCommand
+CameraSetZoomBlockCommand --|> ESCCameraBaseCommand
+CameraSetZoomCommand --|> ESCCameraBaseCommand
+CameraSetZoomHeightBlockCommand --|> ESCBaseCommand
+CameraSetZoomHeightCommand --|> ESCBaseCommand
+CameraShiftBlockCommand --|> ESCCameraBaseCommand
+CameraShiftCommand --|> ESCCameraBaseCommand
+ChangeSceneCommand --|> ESCBaseCommand
+CustomCommand --|> ESCBaseCommand
+DecGlobalCommand --|> ESCBaseCommand
+class Resource
+ESCActionManager --|> Resource
+class Resource
+ESCAnimationName --|> Resource
+class Node
+ESCAnimationPlayer --|> Node
+class Resource
+ESCAnimationResource --|> Resource
+class TextureRect
+ESCBackground --|> TextureRect
+class Resource
+ESCBaseCommand --|> Resource
+class Camera2D
+ESCCamera --|> Camera2D
+ESCCameraBaseCommand --|> ESCBaseCommand
+class RefCounted
+ESCCameraLimits --|> RefCounted
+ESCCommand --|> ESCStatement
+class RefCounted
+ESCCommandArgumentDescriptor --|> RefCounted
+class RefCounted
+ESCCommandRegistry --|> RefCounted
+class Resource
+ESCCompiler --|> Resource
+class RefCounted
+ESCCondition --|> RefCounted
+ESCDialog --|> ESCStatement
+ESCDialogLocation --|> ESCLocation
+class Control
+ESCDialogManager --|> Control
+ESCDialogOption --|> ESCStatement
+class Control
+ESCDialogOptionsChooser --|> Control
+class Node
+ESCDialogPlayer --|> Node
+class Resource
+ESCDirectionAngle --|> Resource
+ESCEvent --|> ESCStatement
+class Node
+ESCEventManager --|> Node
+class Resource
+ESCExecution --|> Resource
+ESCExit --|> ESCItem
+class Node2D
+ESCGame --|> Node2D
+ESCGame9Verbs --|> ESCGame
+class Resource
+ESCGlobalsManager --|> Resource
+ESCGroup --|> ESCStatement
+class Resource
+ESCInputsManager --|> Resource
+ESCInteractionLocation --|> ESCLocation
+class Control
+ESCInventory --|> Control
+class TextureButton
+ESCInventoryButton --|> TextureButton
+class Control
+ESCInventoryContainer --|> Control
+class Resource
+ESCInventoryManager --|> Resource
+class Area2D
+ESCItem --|> Area2D
+class Marker2D
+ESCLocation --|> Marker2D
+ESCLoggerFile --|> ESCLoggerBase
+ESCLoggerVerbose --|> ESCLoggerBase
+class Node
+ESCMain --|> Node
+class RefCounted
+ESCMigration --|> RefCounted
+class RefCounted
+ESCMigrationManager --|> RefCounted
+class Node
+ESCMovable --|> Node
+class Control
+ESCMusicPlayer --|> Control
+class RefCounted
+ESCObject --|> RefCounted
+class Resource
+ESCObjectManager --|> Resource
+ESCPlayer --|> ESCItem
+class Resource
+ESCProjectSettingsManager --|> Resource
+class Node
+ESCResourceCache --|> Node
+class Resource
+ESCResourceDescriptor --|> Resource
+class Node2D
+ESCRoom --|> Node2D
+class RefCounted
+ESCRoomContainer --|> RefCounted
+class Resource
+ESCRoomManager --|> Resource
+ESCRoomObjects --|> ESCRoomContainer
+class RefCounted
+ESCRoomObjectsKey --|> RefCounted
+ESCRoomTerrains --|> ESCRoomContainer
+class Resource
+ESCSaveGame --|> Resource
+class Resource
+ESCSaveSettings --|> Resource
+class RefCounted
+ESCScheduledEvent --|> RefCounted
+class Resource
+ESCScript --|> Resource
+class Control
+ESCSoundPlayer --|> Control
+class Control
+ESCSpeechPlayer --|> Control
+class RefCounted
+ESCStatement --|> RefCounted
+class Node2D
+ESCTerrain --|> Node2D
+class RichTextLabel
+ESCTooltip --|> RichTextLabel
+class ColorRect
+ESCTransitionPlayer --|> ColorRect
+class RefCounted
+ESCUtils --|> RefCounted
+class RefCounted
+ESCWalkContext --|> RefCounted
+EnableTerrainCommand --|> ESCBaseCommand
+EndBlockSayCommand --|> ESCBaseCommand
+Esc_dialog_simple --|> ESCDialogManager
+class Window
+Esc_prompt_popup --|> Window
+class Node
+Escoria --|> Node
+class RichTextLabel
+Floating --|> RichTextLabel
+Game --|> ESCGame
+HideMenuCommand --|> ESCBaseCommand
+class CanvasLayer
+Hover_stack --|> CanvasLayer
+IncGlobalCommand --|> ESCBaseCommand
+InventoryAddCommand --|> ESCBaseCommand
+InventoryRemoveCommand --|> ESCBaseCommand
+Inventory_ui --|> ESCInventory
+Keyboard --|> ESCGame
+class Control
+Load_game --|> Control
+class Button
+Load_save_slot --|> Button
+class Node
+Main --|> Node
+class Control
+Main_menu --|> Control
+class Control
+Options --|> Control
+class Popup
+Overwrite_confirm_popup --|> Popup
+class Control
+Pause_menu --|> Control
+PlaySndCommand --|> ESCBaseCommand
+class EditorPlugin
+Plugin --|> EditorPlugin
+PrintCommand --|> ESCBaseCommand
+QueueEventCommand --|> ESCBaseCommand
+QueueResourceCommand --|> ESCBaseCommand
+RandGlobalCommand --|> ESCBaseCommand
+RepeatCommand --|> ESCBaseCommand
+class OptionButton
+Room_select --|> OptionButton
+SaveGameCommand --|> ESCBaseCommand
+class Control
+Save_game --|> Control
+class Popup
+Save_name_popup --|> Popup
+SayCommand --|> ESCBaseCommand
+SchedEventCommand --|> ESCBaseCommand
+SetActiveCommand --|> ESCBaseCommand
+SetActiveIfExistsCommand --|> ESCBaseCommand
+SetAngleCommand --|> ESCBaseCommand
+SetAnimationsCommand --|> ESCBaseCommand
+SetDirectionCommand --|> ESCBaseCommand
+SetGlobalCommand --|> ESCBaseCommand
+SetGlobalsCommand --|> ESCBaseCommand
+SetGuiVisibleCommand --|> ESCBaseCommand
+SetInteractiveCommand --|> ESCBaseCommand
+SetItemCustomDataCommand --|> ESCBaseCommand
+SetSpeedCommand --|> ESCBaseCommand
+SetStateCommand --|> ESCBaseCommand
+ShowMenuCommand --|> ESCBaseCommand
+Simple --|> ESCDialogOptionsChooser
+SlideBlockCommand --|> SlideCommand
+SlideCommand --|> ESCBaseCommand
+SpawnCommand --|> ESCBaseCommand
+class Node
+State --|> Node
+class Node
+StateMachine --|> Node
+StopCommand --|> ESCBaseCommand
+StopSndCommand --|> ESCBaseCommand
+TeleportCommand --|> ESCBaseCommand
+TeleportPosCommand --|> ESCBaseCommand
+Tooltip_action_target --|> ESCTooltip
+Tooltip_target --|> ESCTooltip
+TransitionCommand --|> ESCBaseCommand
+TurnToCommand --|> ESCBaseCommand
+class Control
+Verbs_menu --|> Control
+class Control
+Verbs_mouseicons --|> Control
+WaitCommand --|> ESCBaseCommand
+WalkBlockCommand --|> ESCBaseCommand
+WalkCommand --|> ESCBaseCommand
+WalkToPosBlockCommand --|> ESCBaseCommand
+WalkToPosCommand --|> ESCBaseCommand
+
+' archivos de origen
+note bottom of AcceptInputCommand : escoria/core-scripts/esc/commands/accept_input.gd
+note bottom of AnimBlockCommand : escoria/core-scripts/esc/commands/anim_block.gd
+note bottom of AnimCommand : escoria/core-scripts/esc/commands/anim.gd
+note bottom of Avatar : escoria/scenes/avatar.gd
+note bottom of BlockSayCommand : escoria/core-scripts/esc/commands/block_say.gd
+note bottom of CameraPushBlockCommand : escoria/core-scripts/esc/commands/camera_push_block.gd
+note bottom of CameraPushCommand : escoria/core-scripts/esc/commands/camera_push.gd
+note bottom of CameraSetLimitsCommand : escoria/core-scripts/esc/commands/camera_set_limits.gd
+note bottom of CameraSetPosBlockCommand : escoria/core-scripts/esc/commands/camera_set_pos_block.gd
+note bottom of CameraSetPosCommand : escoria/core-scripts/esc/commands/camera_set_pos.gd
+note bottom of CameraSetTargetBlockCommand : escoria/core-scripts/esc/commands/camera_set_target_block.gd
+note bottom of CameraSetTargetCommand : escoria/core-scripts/esc/commands/camera_set_target.gd
+note bottom of CameraSetZoomBlockCommand : escoria/core-scripts/esc/commands/camera_set_zoom_block.gd
+note bottom of CameraSetZoomCommand : escoria/core-scripts/esc/commands/camera_set_zoom.gd
+note bottom of CameraSetZoomHeightBlockCommand : escoria/core-scripts/esc/commands/camera_set_zoom_height_block.gd
+note bottom of CameraSetZoomHeightCommand : escoria/core-scripts/esc/commands/camera_set_zoom_height.gd
+note bottom of CameraShiftBlockCommand : escoria/core-scripts/esc/commands/camera_shift_block.gd
+note bottom of CameraShiftCommand : escoria/core-scripts/esc/commands/camera_shift.gd
+note bottom of ChangeSceneCommand : escoria/core-scripts/esc/commands/change_scene.gd
+note bottom of CustomCommand : escoria/core-scripts/esc/commands/custom.gd
+note bottom of DecGlobalCommand : escoria/core-scripts/esc/commands/dec_global.gd
+note bottom of Dialog_choices : escoria/core-scripts/state_machine/states/dialog_choices.gd
+note bottom of Dialog_finish : escoria/core-scripts/state_machine/states/dialog_finish.gd
+note bottom of Dialog_idle : escoria/core-scripts/state_machine/states/dialog_idle.gd
+note bottom of Dialog_interrupt : escoria/core-scripts/state_machine/states/dialog_interrupt.gd
+note bottom of Dialog_say : escoria/core-scripts/state_machine/states/dialog_say.gd
+note bottom of Dialog_say_fast : escoria/core-scripts/state_machine/states/dialog_say_fast.gd
+note bottom of Dialog_say_finish : escoria/core-scripts/state_machine/states/dialog_say_finish.gd
+note bottom of Dialog_visible : escoria/core-scripts/state_machine/states/dialog_visible.gd
+note bottom of ESCActionManager : escoria/core-scripts/managers/esc_action_manager.gd
+note bottom of ESCAnimationName : escoria/core-scripts/esc/esc_animationname.gd
+note bottom of ESCAnimationPlayer : escoria/core-scripts/entities/esc_animation_player.gd
+note bottom of ESCAnimationResource : escoria/core-scripts/esc/esc_animationresource.gd
+note bottom of ESCBackground : escoria/core-scripts/entities/esc_background.gd
+note bottom of ESCBaseCommand : escoria/core-scripts/compile/esc_base_command.gd
+note bottom of ESCCamera : escoria/scenes/esc_camera.gd
+note bottom of ESCCameraBaseCommand : escoria/core-scripts/compile/esc_camera_base_command.gd
+note bottom of ESCCameraLimits : escoria/scenes/esc_camera_limits.gd
+note bottom of ESCCommand : escoria/core-scripts/compile/esc_command.gd
+note bottom of ESCCommandArgumentDescriptor : escoria/core-scripts/compile/esc_command_argument_descriptor.gd
+note bottom of ESCCommandRegistry : escoria/core-scripts/compile/esc_command_registry.gd
+note bottom of ESCCompiler : escoria/core-scripts/compile/esc_compiler.gd
+note bottom of ESCCondition : escoria/core-scripts/compile/esc_condition.gd
+note bottom of ESCDialog : escoria/core-scripts/compile/esc_dialog.gd
+note bottom of ESCDialogLocation : escoria/core-scripts/entities/esc_dialog_location.gd
+note bottom of ESCDialogManager : escoria/core-scripts/managers/esc_dialog_manager.gd
+note bottom of ESCDialogOption : escoria/core-scripts/compile/esc_dialog_option.gd
+note bottom of ESCDialogOptionsChooser : escoria/core-scripts/dialog/esc_dialog_options_chooser.gd
+note bottom of ESCDialogPlayer : escoria/core-scripts/dialog/esc_dialog_player.gd
+note bottom of ESCDirectionAngle : escoria/core-scripts/esc/esc_directionangle.gd
+note bottom of ESCEvent : escoria/core-scripts/compile/esc_event.gd
+note bottom of ESCEventManager : escoria/core-scripts/managers/esc_event_manager.gd
+note bottom of ESCExecution : escoria/core-scripts/compile/esc_execution.gd
+note bottom of ESCExit : escoria/core-scripts/entities/esc_exit.gd
+note bottom of ESCGame : escoria/core-scripts/entities/esc_game.gd
+note bottom of ESCGame9Verbs : escoria/ui-library/dialog/9-verb/9verb.gd
+note bottom of ESCGlobalsManager : escoria/core-scripts/managers/esc_globals_manager.gd
+note bottom of ESCGroup : escoria/core-scripts/compile/esc_group.gd
+note bottom of ESCInputsManager : escoria/core-scripts/managers/esc_inputs_manager.gd
+note bottom of ESCInteractionLocation : escoria/core-scripts/entities/esc_interaction_location.gd
+note bottom of ESCInventory : escoria/core-scripts/entities/inventory_ui.gd
+note bottom of ESCInventoryButton : escoria/ui-library/inventory/esc_inventory_button.gd
+note bottom of ESCInventoryContainer : escoria/ui-library/inventory/esc_inventory_container.gd
+note bottom of ESCInventoryItem : escoria/core-scripts/entities/esc_inventory_item.gd
+note bottom of ESCInventoryManager : escoria/core-scripts/managers/esc_inventory_manager.gd
+note bottom of ESCItem : escoria/core-scripts/entities/esc_item.gd
+note bottom of ESCLocation : escoria/core-scripts/entities/esc_location.gd
+note bottom of ESCLoggerBase : escoria/core-scripts/managers/esc_logger.gd
+note bottom of ESCLoggerFile : escoria/core-scripts/managers/esc_loggerFile.gd
+note bottom of ESCLoggerVerbose : escoria/core-scripts/managers/esc_loggerVerbose.gd
+note bottom of ESCMain : escoria/scenes/main_scene.gd
+note bottom of ESCMigration : escoria/core-scripts/managers/esc_migration.gd
+note bottom of ESCMigrationManager : escoria/core-scripts/managers/esc_migration_manager.gd
+note bottom of ESCMovable : escoria/core-scripts/entities/esc_movable.gd
+note bottom of ESCMusicPlayer : escoria/scenes/esc_music_player.gd
+note bottom of ESCObject : escoria/core-scripts/compile/esc_object.gd
+note bottom of ESCObjectManager : escoria/core-scripts/managers/esc_object_manager.gd
+note bottom of ESCPlayer : escoria/core-scripts/entities/esc_player.gd
+note bottom of ESCProjectSettingsManager : escoria/core-scripts/managers/esc_project_settings_manager.gd
+note bottom of ESCResourceCache : escoria/core-scripts/entities/esc_resource_cache.gd
+note bottom of ESCResourceDescriptor : escoria/core-scripts/esc/esc_resource_descriptor.gd
+note bottom of ESCRoom : escoria/core-scripts/entities/esc_room.gd
+note bottom of ESCRoomContainer : escoria/core-scripts/compile/esc_room_container.gd
+note bottom of ESCRoomManager : escoria/core-scripts/managers/esc_room_manager.gd
+note bottom of ESCRoomObjects : escoria/core-scripts/compile/esc_room_objects.gd
+note bottom of ESCRoomObjectsKey : escoria/core-scripts/compile/esc_room_objects_key.gd
+note bottom of ESCRoomTerrains : escoria/core-scripts/compile/esc_room_terrains.gd
+note bottom of ESCSaveGame : escoria/core-scripts/esc/esc_savegame.gd
+note bottom of ESCSaveManager : escoria/core-scripts/managers/esc_save_manager.gd
+note bottom of ESCSaveSettings : escoria/core-scripts/esc/esc_savesettings.gd
+note bottom of ESCScheduledEvent : escoria/core-scripts/compile/esc_scheduled_event.gd
+note bottom of ESCScript : escoria/core-scripts/compile/esc_script.gd
+note bottom of ESCSettingsManager : escoria/core-scripts/managers/esc_settings_manager.gd
+note bottom of ESCSoundPlayer : escoria/scenes/esc_sound_player.gd
+note bottom of ESCSpeechPlayer : escoria/scenes/esc_speech_player.gd
+note bottom of ESCStatement : escoria/core-scripts/compile/esc_statement.gd
+note bottom of ESCTerrain : escoria/core-scripts/entities/esc_terrain.gd
+note bottom of ESCTooltip : escoria/core-scripts/entities/esc_tooltip.gd
+note bottom of ESCTransitionPlayer : escoria/scenes/esc_transition_player.gd
+note bottom of ESCUtils : escoria/core-scripts/esc/esc_utils.gd
+note bottom of ESCWalkContext : escoria/core-scripts/entities/esc_walk_context.gd
+note bottom of EnableTerrainCommand : escoria/core-scripts/esc/commands/enable_terrain.gd
+note bottom of EndBlockSayCommand : escoria/core-scripts/esc/commands/end_block_say.gd
+note bottom of Esc_dialog_simple : escoria/core-scripts/dialog/esc_dialog_simple.gd
+note bottom of Esc_dialog_simple_state_machine : escoria/core-scripts/dialog/esc_dialog_simple_state_machine.gd
+note bottom of Esc_prompt_popup : escoria/scenes/esc_prompt_popup.gd
+note bottom of Escoria : escoria/scenes/esc_autoload.gd
+note bottom of Floating : escoria/scenes/floating.gd
+note bottom of Game : escoria/ui-library/dialog/mouse/game.gd
+note bottom of HideMenuCommand : escoria/core-scripts/esc/commands/hide_menu.gd
+note bottom of Hover_stack : escoria/ui-library/tools/hover_stack/hover_stack.gd
+note bottom of IncGlobalCommand : escoria/core-scripts/esc/commands/inc_global.gd
+note bottom of Input_map : escoria/ui-library/dialog/keyboard/input_map.gd
+note bottom of InventoryAddCommand : escoria/core-scripts/esc/commands/inventory_add.gd
+note bottom of InventoryRemoveCommand : escoria/core-scripts/esc/commands/inventory_remove.gd
+note bottom of Inventory_ui : escoria/ui-library/dialog/mouse/inventory_ui.gd
+note bottom of Keyboard : escoria/ui-library/dialog/keyboard/keyboard.gd
+note bottom of Load_game : escoria/ui-library/menus/load_save/load/load_game.gd
+note bottom of Load_save_slot : escoria/ui-library/menus/load_save/load_save_slot/load_save_slot.gd
+note bottom of Main : escoria/scenes/main.gd
+note bottom of Main_menu : escoria/ui-library/menus/main_menu/main_menu.gd
+note bottom of Options : escoria/ui-library/menus/options/options.gd
+note bottom of Overwrite_confirm_popup : escoria/ui-library/menus/load_save/save/overwrite_confirm_popup.gd
+note bottom of Pause_menu : escoria/ui-library/menus/pause_menu/pause_menu.gd
+note bottom of PlaySndCommand : escoria/core-scripts/esc/commands/play_snd.gd
+note bottom of Plugin : escoria/plugin.gd
+note bottom of PrintCommand : escoria/core-scripts/esc/commands/print.gd
+note bottom of QueueEventCommand : escoria/core-scripts/esc/commands/queue_event.gd
+note bottom of QueueResourceCommand : escoria/core-scripts/esc/commands/queue_resource.gd
+note bottom of RandGlobalCommand : escoria/core-scripts/esc/commands/rand_global.gd
+note bottom of RepeatCommand : escoria/core-scripts/esc/commands/repeat.gd
+note bottom of Room_select : escoria/ui-library/tools/room_select/room_select.gd
+note bottom of SaveGameCommand : escoria/core-scripts/esc/commands/save_game.gd
+note bottom of SaveGamesSorter : escoria/ui-library/menus/load_save/SaveGamesSorter.gd
+note bottom of Save_game : escoria/ui-library/menus/load_save/save/save_game.gd
+note bottom of Save_name_popup : escoria/ui-library/menus/load_save/save/save_name_popup.gd
+note bottom of SayCommand : escoria/core-scripts/esc/commands/say.gd
+note bottom of SchedEventCommand : escoria/core-scripts/esc/commands/sched_event.gd
+note bottom of SetActiveCommand : escoria/core-scripts/esc/commands/set_active.gd
+note bottom of SetActiveIfExistsCommand : escoria/core-scripts/esc/commands/set_active_if_exists.gd
+note bottom of SetAngleCommand : escoria/core-scripts/esc/commands/set_angle.gd
+note bottom of SetAnimationsCommand : escoria/core-scripts/esc/commands/set_animations.gd
+note bottom of SetDirectionCommand : escoria/core-scripts/esc/commands/set_direction.gd
+note bottom of SetGlobalCommand : escoria/core-scripts/esc/commands/set_global.gd
+note bottom of SetGlobalsCommand : escoria/core-scripts/esc/commands/set_globals.gd
+note bottom of SetGuiVisibleCommand : escoria/core-scripts/esc/commands/set_gui_visible.gd
+note bottom of SetInteractiveCommand : escoria/core-scripts/esc/commands/set_interactive.gd
+note bottom of SetItemCustomDataCommand : escoria/core-scripts/esc/commands/set_item_custom_data.gd
+note bottom of SetSpeedCommand : escoria/core-scripts/esc/commands/set_speed.gd
+note bottom of SetStateCommand : escoria/core-scripts/esc/commands/set_state.gd
+note bottom of ShowMenuCommand : escoria/core-scripts/esc/commands/show_menu.gd
+note bottom of Simple : escoria/scenes/simple.gd
+note bottom of SlideBlockCommand : escoria/core-scripts/esc/commands/slide_block.gd
+note bottom of SlideCommand : escoria/core-scripts/esc/commands/slide.gd
+note bottom of SpawnCommand : escoria/core-scripts/esc/commands/spawn.gd
+note bottom of State : escoria/core-scripts/state_machine/state.gd
+note bottom of StateMachine : escoria/core-scripts/state_machine/state_machine.gd
+note bottom of StopCommand : escoria/core-scripts/esc/commands/stop.gd
+note bottom of StopSndCommand : escoria/core-scripts/esc/commands/stop_snd.gd
+note bottom of TeleportCommand : escoria/core-scripts/esc/commands/teleport.gd
+note bottom of TeleportPosCommand : escoria/core-scripts/esc/commands/teleport_pos.gd
+note bottom of Tooltip_action_target : escoria/ui-library/dialog/tooltip_action_target.gd
+note bottom of Tooltip_target : escoria/ui-library/dialog/mouse/tooltip_target.gd
+note bottom of TransitionCommand : escoria/core-scripts/esc/commands/transition.gd
+note bottom of TurnToCommand : escoria/core-scripts/esc/commands/turn_to.gd
+note bottom of Verbs_menu : escoria/ui-library/dialog/verbs_menu.gd
+note bottom of Verbs_mouseicons : escoria/ui-library/dialog/mouse/verbs_mouseicons.gd
+note bottom of WaitCommand : escoria/core-scripts/esc/commands/wait.gd
+note bottom of WalkBlockCommand : escoria/core-scripts/esc/commands/walk_block.gd
+note bottom of WalkCommand : escoria/core-scripts/esc/commands/walk.gd
+note bottom of WalkToPosBlockCommand : escoria/core-scripts/esc/commands/walk_to_pos_block.gd
+note bottom of WalkToPosCommand : escoria/core-scripts/esc/commands/walk_to_pos.gd
+@enduml
