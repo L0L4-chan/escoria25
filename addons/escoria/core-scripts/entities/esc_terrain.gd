@@ -52,11 +52,12 @@ var _lightmap_data
 var _texture_in_update = false
 
 # Logger instance
-@onready var logger = ESCLoggerFile.new()
+var logger
 
 # Set a reference to the active navigation polygon, register to Escoria
 # and update the texture
 func _ready():
+	logger = escoria.logger
 	connect("child_entered_tree", self._check_multiple_enabled_navpolys)
 	child_exiting_tree.connect( self._check_multiple_enabled_navpolys.bind(true))
 

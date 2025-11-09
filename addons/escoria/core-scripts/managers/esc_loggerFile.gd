@@ -8,6 +8,7 @@ var log_file: FileAccess
 func _init():
 	# Open logfile in write mode
 	# This is left alone as this constructor is called from escoria.gd's own
+	super._init()
 	# constructor
 	var log_file_path = ProjectSettings.get_setting(
 		ESCProjectSettingsManager.LOG_FILE_PATH
@@ -49,9 +50,9 @@ func debug_message(context: String, msg: String):
 
 # Info log
 func info(owner: Object, msg: String):
-	#if _log_level >= LOG_INFO:
-	#	_log_to_file(owner, msg, "I")
-	#	super.info(owner, msg)
+	if _log_level >= LOG_INFO:
+		_log_to_file(owner, msg, "I")
+		super.info(owner, msg)
 		print(msg)
 
 # Static info log

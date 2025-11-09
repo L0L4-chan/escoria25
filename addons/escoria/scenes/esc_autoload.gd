@@ -148,7 +148,8 @@ var creating_new_game: bool = false
 
 
 # Ready function
-func _ready():		
+func _ready():	
+	logger = ESCLoggerFile.new()	
 	_handle_direct_scene_run()
 
 	settings_manager.load_settings()
@@ -207,7 +208,7 @@ func _on_game_finished_loading():
 
 
 func _init():
-	logger = ESCLoggerFile.new()
+	
 	inventory_manager = ESCInventoryManager.new()
 	action_manager = ESCActionManager.new()
 	event_manager = ESCEventManager.new()
